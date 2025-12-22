@@ -41,14 +41,22 @@
     .wrap{max-width:var(--max); margin:0 auto; padding:32px 18px 60px}
     header{padding:28px 0 18px}
 
+    /* Navigation */
     .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:18px;
+      font-size:14px;
+    }
+    .nav-left{
+      font-weight:500;
+      color:var(--muted);
+    }
+    .nav-right{
       display:flex;
       gap:14px;
       flex-wrap:wrap;
-      justify-content:flex-end;
-      margin-bottom:18px;
-      font-size:14px;
-      color:var(--muted);
     }
     .nav a{color:var(--muted)}
     .nav a:hover{color:var(--text); text-decoration:none}
@@ -62,7 +70,6 @@
 
     @media (max-width: 860px){
       .hero{grid-template-columns:1fr}
-      .nav{justify-content:flex-start}
     }
 
     .card{
@@ -205,10 +212,13 @@
 
 <header>
 <nav class="nav">
-  <a href="#about">About</a>
-  <a href="#research">Research</a>
-  <a href="#outputs">Outputs</a>
-  <a href="#contact">Contact</a>
+  <div class="nav-left">Callum Pearse</div>
+  <div class="nav-right">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#outputs">Outputs</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
 <div class="hero">
