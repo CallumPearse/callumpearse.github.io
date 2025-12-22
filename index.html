@@ -9,7 +9,6 @@
   <style>
     :root{
       --bg:#0b1220;
-      --card:#0f1a33;
       --text:#e8eefc;
       --muted:#b8c4e6;
       --link:#9cc2ff;
@@ -152,6 +151,14 @@
     }
     .btn:hover{background: rgba(0,0,0,.22); text-decoration:none}
     .dot{width:7px; height:7px; border-radius:50%; background:#9cc2ff; display:inline-block}
+
+    .btn.primary{
+      border-color: rgba(156,194,255,.35);
+      background: rgba(156,194,255,.14);
+    }
+    .btn.primary:hover{
+      background: rgba(156,194,255,.22);
+    }
   </style>
 </head>
 
@@ -169,25 +176,25 @@
         <section class="card">
           <h1>Callum Pearse</h1>
           <p class="subtitle">
-            Fourth-year medical student, King’s College London · Surgical research · Robotic surgery training
+            Fourth-year medical student, King’s College London · Surgical research · Robotic Surgery Research
           </p>
           <p class="muted">
-            I work on surgical education and objective assessment of operative performance, with interests spanning
+            Alongside my studies, I work on research on surgical education and objective assessment of operative performance, with interests spanning
             robotic skill acquisition, simulation-based training, and workforce wellbeing.
           </p>
 
           <div class="badges">
             <span class="badge">Systematic reviews & meta-analysis</span>
-            <span class="badge">Robotic surgical training</span>
+            <span class="badge">Robotic Surgery Research</span>
             <span class="badge">Performance analytics</span>
             <span class="badge">Workforce wellbeing</span>
           </div>
 
           <div class="btnrow">
-            <a class="btn" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en"><span class="dot"></span>Google Scholar</a>
-            <a class="btn" href="https://orcid.org/0009-0000-7396-7595"><span class="dot"></span>ORCID</a>
-            <a class="btn" href="https://www.researchgate.net/profile/Callum-Pearse-3"><span class="dot"></span>ResearchGate</a>
             <a class="btn" href="https://www.linkedin.com/in/callum-pearse-/"><span class="dot"></span>LinkedIn</a>
+            <a class="btn" href="https://www.researchgate.net/profile/Callum-Pearse-3"><span class="dot"></span>ResearchGate</a>
+            <a class="btn" href="https://orcid.org/0009-0000-7396-7595"><span class="dot"></span>ORCID</a>
+            <a class="btn" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en"><span class="dot"></span>Google Scholar</a>
             <a class="btn" href="https://gb.bold.pro/my/callum-pearse"><span class="dot"></span>Bold.pro</a>
           </div>
         </section>
@@ -195,7 +202,7 @@
         <aside class="card">
           <h2>At a glance</h2>
           <p class="small muted">
-            Current focus: robotic surgical skill acquisition and training design; evidence synthesis in surgeon wellbeing.
+            Current focus: robotic surgical skill acquisition and training design.
           </p>
           <ul class="small">
             <li>Peer-reviewed publication in <em>BMJ Paediatrics Open</em> (2025)</li>
@@ -237,7 +244,7 @@
         <div class="list">
           <div class="item">
             <strong>Burnout among paediatric surgeons: a systematic review and meta-analysis</strong>
-            <div class="meta">BMJ Paediatrics Open · 2025 · Published</div>
+            <div class="meta">BMJ Paediatrics Open · 2025 · Published · DOI: <a href="https://doi.org/10.1136/bmjpo-2025-004030">10.1136/bmjpo-2025-004030</a></div>
             <div class="meta">Summary: pooled prevalence estimate and synthesis of contributing and protective factors.</div>
           </div>
 
@@ -248,14 +255,16 @@
           </div>
         </div>
 
-        <h3 class="small" style="margin:18px 0 6px;">Posters & conference contributions</h3>
-        <p class="muted small">
-          Add posters/presentations here as you wish. Keep to items that were accepted/presented, with conference name and year.
-        </p>
+        <h3 class="small" style="margin:18px 0 6px;">Posters & conference papers</h3>
         <div class="list">
           <div class="item">
-            <strong>[Poster/Presentation title]</strong>
-            <div class="meta">[Conference name] · [Year] · Poster/Oral presentation</div>
+            <strong>Bimanual Dexterity as an Objective Marker of Robotic Surgical Expertise for a Machine Learning Model</strong>
+            <div class="meta">Poster · RCSEd Triennial & ICOSET Conference · 2025 · Presented by Callum Pearse</div>
+          </div>
+
+          <div class="item">
+            <strong>Hands On: A Comparative Analysis of Left- and Right-Hand Workspaces in Surgical Robotic Skills Training</strong>
+            <div class="meta">Conference paper · Hamlyn Symposium of Medical Robotics · 2025 · Presented by a co-author</div>
           </div>
         </div>
       </section>
@@ -263,13 +272,14 @@
       <section id="contact" class="card" style="grid-column:1 / -1;">
         <h2>Contact</h2>
         <p class="muted">For academic collaboration or research enquiries:</p>
-        <p><strong>Email:</strong> <a href="mailto:callum.pearse@doctors.org.uk">callum.pearse@doctors.org.uk</a></p>
 
         <div class="btnrow">
-          <a class="btn" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en"><span class="dot"></span>Google Scholar</a>
-          <a class="btn" href="https://orcid.org/0009-0000-7396-7595"><span class="dot"></span>ORCID</a>
-          <a class="btn" href="https://www.researchgate.net/profile/Callum-Pearse-3"><span class="dot"></span>ResearchGate</a>
+          <a class="btn primary" href="mailto:callum.pearse@doctors.org.uk"><span class="dot"></span>Contact me</a>
           <a class="btn" href="https://www.linkedin.com/in/callum-pearse-/"><span class="dot"></span>LinkedIn</a>
+          <a class="btn" href="https://www.researchgate.net/profile/Callum-Pearse-3"><span class="dot"></span>ResearchGate</a>
+          <a class="btn" href="https://orcid.org/0009-0000-7396-7595"><span class="dot"></span>ORCID</a>
+          <a class="btn" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en"><span class="dot"></span>Google Scholar</a>
+          <a class="btn" href="https://gb.bold.pro/my/callum-pearse"><span class="dot"></span>Bold.pro</a>
         </div>
       </section>
     </main>
