@@ -12,6 +12,14 @@
   <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/favicon.png">
 
+  <!-- Basic citation / scholarly metadata -->
+  <meta name="citation_author" content="Callum Pearse">
+  <meta name="citation_title" content="Burnout among paediatric surgeons: a systematic review and meta-analysis">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_journal_title" content="BMJ Paediatrics Open">
+  <meta name="citation_doi" content="10.1136/bmjpo-2025-004030">
+  <meta name="citation_public_url" content="https://doi.org/10.1136/bmjpo-2025-004030">
+
   <style>
     :root{
       --bg:#0b1220;
@@ -28,7 +36,7 @@
 
     body{
       margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
       background:
         radial-gradient(1200px 700px at 20% -10%, rgba(156,194,255,.25), transparent 55%),
         radial-gradient(900px 600px at 90% 10%, rgba(148,255,214,.12), transparent 50%),
@@ -91,6 +99,7 @@
       display:grid;
       grid-template-columns:1.2fr .8fr;
       gap:18px;
+      align-items:stretch;
     }
 
     @media (max-width:860px){
@@ -126,6 +135,7 @@
       object-fit:cover;
       border:1px solid var(--border);
       background:rgba(0,0,0,.2);
+      flex:0 0 auto;
     }
 
     .subtitle{
@@ -190,6 +200,7 @@
 
     .item strong{display:block;margin-bottom:4px}
     .meta{font-size:13px;color:var(--muted)}
+    .summary{margin-top:8px;color:var(--muted);font-size:14px}
 
     .btnrow{
       display:flex;
@@ -198,6 +209,7 @@
       margin-top:12px;
     }
 
+    /* All buttons use the "contact-style" look */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -222,7 +234,51 @@
       color:var(--muted);
       font-size:13px;
     }
+
+    .footerlinks{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:10px;
+      font-size:13px;
+    }
+    .footerlinks a{color:var(--muted)}
+    .footerlinks a:hover{color:var(--text); text-decoration:none}
   </style>
+
+  <!-- Structured data (schema.org) for scholarly outputs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Callum Pearse",
+    "url":"https://callumpearse.co.uk/",
+    "sameAs":[
+      "https://www.linkedin.com/in/callum-pearse-/",
+      "https://www.researchgate.net/profile/Callum-Pearse-3",
+      "https://orcid.org/0009-0000-7396-7595",
+      "https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en",
+      "https://gb.bold.pro/my/callum-pearse"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ScholarlyArticle",
+    "name":"Burnout among paediatric surgeons: a systematic review and meta-analysis",
+    "url":"https://doi.org/10.1136/bmjpo-2025-004030",
+    "identifier":"https://doi.org/10.1136/bmjpo-2025-004030",
+    "doi":"10.1136/bmjpo-2025-004030",
+    "isPartOf":{
+      "@type":"Periodical",
+      "name":"BMJ Paediatrics Open"
+    },
+    "datePublished":"2025"
+  }
+  </script>
+
 </head>
 
 <body>
@@ -314,7 +370,7 @@
   <section id="outputs" class="card" style="grid-column:1 / -1;">
     <h2>Research outputs</h2>
 
-    <h3 class="small">Journal articles</h3>
+    <h3 class="small" style="margin:14px 0 6px;">Journal articles</h3>
     <div class="list">
       <div class="item">
         <strong>
@@ -322,7 +378,10 @@
             Burnout among paediatric surgeons: a systematic review and meta-analysis
           </a>
         </strong>
-        <div class="meta">BMJ Paediatrics Open · 2025</div>
+        <div class="meta">BMJ Paediatrics Open · 2025 · DOI: <a href="https://doi.org/10.1136/bmjpo-2025-004030">10.1136/bmjpo-2025-004030</a></div>
+        <p class="summary">
+          Systematic review and meta-analysis estimating burnout prevalence in paediatric surgery and synthesising associated risk and protective factors.
+        </p>
       </div>
 
       <div class="item">
@@ -330,10 +389,13 @@
           Assessing effectiveness and skill transferability in multi-platform simulated training for robotic surgical skills: a systematic review
         </strong>
         <div class="meta">Journal of Robotic Surgery · Accepted (in press)</div>
+        <p class="summary">
+          Evidence synthesis examining how simulated robotic training translates across platforms, with implications for curriculum design and assessment.
+        </p>
       </div>
     </div>
 
-    <h3 class="small" style="margin-top:18px;">Posters &amp; conference papers</h3>
+    <h3 class="small" style="margin:18px 0 6px;">Posters &amp; conference papers</h3>
     <div class="list">
       <div class="item">
         <strong>
@@ -342,6 +404,9 @@
           </a>
         </strong>
         <div class="meta">Poster · RCSEd Triennial &amp; ICOSET Conference (Edinburgh) · 2025</div>
+        <p class="summary">
+          Poster exploring bimanual dexterity metrics as an objective marker of robotic expertise to inform machine-learning based performance modelling.
+        </p>
       </div>
 
       <div class="item">
@@ -351,6 +416,9 @@
           </a>
         </strong>
         <div class="meta">Conference paper · Hamlyn Symposium of Medical Robotics (London) · 2025</div>
+        <p class="summary">
+          Comparative analysis of left- and right-hand workspaces in robotic skills training to support targeted practice design and assessment.
+        </p>
       </div>
     </div>
   </section>
@@ -366,6 +434,16 @@
 
 <footer>
   © <span id="y"></span> Callum Pearse · callumpearse.co.uk
+
+  <!-- Footer quick links -->
+  <div class="footerlinks">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#outputs">Outputs</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.linkedin.com/in/callum-pearse-/">LinkedIn</a>
+    <a href="https://orcid.org/0009-0000-7396-7595">ORCID</a>
+  </div>
 </footer>
 
 </div>
