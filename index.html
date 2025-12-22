@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Callum Pearse</title>
-
   <meta name="description" content="Academic website of Callum Pearse: surgical research, surgical education, robotics, and workforce wellbeing." />
 
-  <!-- Favicon -->
+  <!-- Favicon (robust) -->
   <link rel="icon" href="/assets/favicon.png" type="image/png">
   <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
 
   <style>
     :root{
@@ -28,7 +28,7 @@
 
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background: radial-gradient(1200px 700px at 20% -10%, rgba(156,194,255,.25), transparent 55%),
                   radial-gradient(900px 600px at 90% 10%, rgba(148,255,214,.12), transparent 50%),
                   var(--bg);
@@ -42,7 +42,7 @@
     .wrap{max-width:var(--max); margin:0 auto; padding:32px 18px 60px}
     header{padding:28px 0 18px}
 
-    /* Navigation */
+    /* Navigation with logo */
     .nav{
       display:flex;
       justify-content:space-between;
@@ -50,10 +50,16 @@
       margin-bottom:22px;
     }
 
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
     .nav-left img{
-      height:48px;              /* desktop size */
+      height:52px;         /* desktop: larger */
       width:auto;
-      max-width:260px;
+      max-width:360px;     /* allow wider logos */
       object-fit:contain;
     }
 
@@ -62,17 +68,14 @@
       gap:16px;
       flex-wrap:wrap;
       font-size:14px;
+      color:var(--muted);
     }
 
     .nav a{color:var(--muted)}
     .nav a:hover{color:var(--text); text-decoration:none}
 
-    /* Responsive logo scaling */
     @media (max-width: 900px){
-      .nav-left img{
-        height:42px;
-        max-width:220px;
-      }
+      .nav-left img{height:46px; max-width:320px;}
     }
 
     @media (max-width: 600px){
@@ -81,21 +84,18 @@
         align-items:flex-start;
         gap:14px;
       }
-
       .nav-left img{
-        height:40px;
-        max-width:200px;
+        height:44px;
+        max-width:280px;
       }
-
-      .nav-right{
-        gap:12px;
-      }
+      .nav-right{gap:12px;}
     }
 
     .hero{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
       gap:18px;
+      align-items:stretch;
     }
 
     @media (max-width: 860px){
@@ -111,9 +111,10 @@
     }
 
     h1{
-      margin:0;
+      margin:0 0 8px;
       font-size:40px;
       letter-spacing:-0.5px;
+      line-height:1.15;
     }
 
     .profile{
@@ -122,7 +123,6 @@
       align-items:center;
       margin-bottom:10px;
     }
-
     .profile img{
       width:110px;
       height:110px;
@@ -130,6 +130,7 @@
       object-fit:cover;
       border:1px solid var(--border);
       background: rgba(0,0,0,.2);
+      flex:0 0 auto;
     }
 
     .subtitle{
@@ -144,7 +145,6 @@
       gap:10px;
       margin-top:14px;
     }
-
     .badge{
       font-size:13px;
       padding:7px 10px;
@@ -157,8 +157,8 @@
     h2{
       margin:0 0 10px;
       font-size:18px;
+      letter-spacing:0.2px;
     }
-
     p{margin:0 0 12px}
     .muted{color:var(--muted)}
     .small{font-size:14px}
@@ -169,9 +169,61 @@
       gap:18px;
       margin-top:18px;
     }
+    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
 
-    @media (max-width: 860px){
-      .grid{grid-template-columns:1fr}
+    ul{margin:10px 0 0; padding-left:18px}
+    li{margin:8px 0}
+
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:10px;
+    }
+    .item{
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background: rgba(0,0,0,.10);
+    }
+    .item strong{display:block; margin-bottom:4px}
+    .meta{font-size:13px; color:var(--muted)}
+
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background: rgba(0,0,0,.14);
+      color:var(--text);
+      font-size:14px;
+      text-decoration:none;
+    }
+    .btn:hover{background: rgba(0,0,0,.22); text-decoration:none}
+
+    .dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#9cc2ff;
+      display:inline-block;
+    }
+
+    .btn.primary{
+      border-color: rgba(156,194,255,.35);
+      background: rgba(156,194,255,.14);
+      padding:12px 14px;
+    }
+    .btn.primary:hover{
+      background: rgba(156,194,255,.22);
     }
 
     footer{
@@ -185,60 +237,155 @@
 </head>
 
 <body>
-<div class="wrap">
+  <div class="wrap">
+    <header>
+      <nav class="nav">
+        <div class="nav-left">
+          <img src="assets/logo.png" alt="Callum Pearse logo">
+        </div>
+        <div class="nav-right">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#outputs">Outputs</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
 
-<header>
-  <nav class="nav">
-    <div class="nav-left">
-      <img src="assets/logo.png" alt="Callum Pearse">
-    </div>
-    <div class="nav-right">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#outputs">Outputs</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+      <div class="hero">
+        <section class="card">
+          <div class="profile">
+            <img src="assets/headshot.jpg" alt="Callum Pearse">
+            <h1>Callum Pearse</h1>
+          </div>
 
-  <div class="hero">
-    <section class="card">
-      <div class="profile">
-        <img src="assets/headshot.jpg" alt="Callum Pearse">
-        <h1>Callum Pearse</h1>
+          <p class="subtitle">
+            Fourth-year medical student, King’s College London · Surgical research · Surgical education &amp; robotics
+          </p>
+
+          <p class="muted">
+            Alongside my studies, I contribute to research in surgical education and objective assessment of operative performance,
+            with interests spanning robotic skill acquisition, simulation-based training, and workforce wellbeing.
+          </p>
+
+          <div class="badges">
+            <span class="badge">Systematic reviews &amp; meta-analysis</span>
+            <span class="badge">Surgical education</span>
+            <span class="badge">Robotics</span>
+            <span class="badge">Workforce wellbeing</span>
+          </div>
+
+          <div class="btnrow">
+            <a class="btn" href="https://www.linkedin.com/in/callum-pearse-/"><span class="dot"></span>LinkedIn</a>
+            <a class="btn" href="https://www.researchgate.net/profile/Callum-Pearse-3"><span class="dot"></span>ResearchGate</a>
+            <a class="btn" href="https://orcid.org/0009-0000-7396-7595"><span class="dot"></span>ORCID</a>
+            <a class="btn" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en"><span class="dot"></span>Google Scholar</a>
+            <a class="btn" href="https://gb.bold.pro/my/callum-pearse"><span class="dot"></span>Bold.pro</a>
+          </div>
+        </section>
+
+        <aside class="card">
+          <h2>At a glance</h2>
+          <p class="small muted">
+            Current focus: robotic surgical skill acquisition, training design, and evidence synthesis in surgeon wellbeing.
+          </p>
+          <ul class="small">
+            <li>Peer-reviewed publication in <em>BMJ Paediatrics Open</em> (2025) — paediatric surgery burnout</li>
+            <li>Systematic review accepted by <em>Journal of Robotic Surgery</em></li>
+            <li>Open to surgery-focused research collaboration</li>
+          </ul>
+        </aside>
       </div>
+    </header>
 
-      <p class="subtitle">
-        Fourth-year medical student, King’s College London · Surgical research · Surgical education &amp; robotics
-      </p>
+    <main class="grid">
+      <section id="about" class="card">
+        <h2>About</h2>
+        <p>
+          I am a fourth-year medical student at King’s College London with an academic interest in surgical research,
+          surgical education, and technology-enabled training. I am particularly interested in methods that allow robust,
+          objective assessment of technical performance and learning curves in robotic surgery.
+        </p>
+        <p class="muted">
+          My work includes evidence synthesis in workforce wellbeing and robotic training, and I am keen to contribute to
+          projects that translate methodological rigour into practical improvements in training and service sustainability.
+        </p>
+      </section>
 
-      <p class="muted">
-        Alongside my studies, I contribute to research in surgical education and objective assessment of operative performance,
-        with interests spanning robotic skill acquisition, simulation-based training, and workforce wellbeing.
-      </p>
-    </section>
+      <section id="research" class="card">
+        <h2>Research focus</h2>
+        <ul>
+          <li>Robotic surgical skill acquisition and objective performance assessment</li>
+          <li>Simulation-based training and cross-platform skill transferability</li>
+          <li>Evidence synthesis (systematic reviews, meta-analysis)</li>
+          <li>Clinician wellbeing and workforce sustainability in surgery</li>
+        </ul>
+      </section>
 
-    <aside class="card">
-      <h2>At a glance</h2>
-      <p class="small muted">
-        Current focus: robotic surgical skill acquisition, training design, and evidence synthesis in surgeon wellbeing.
-      </p>
-      <ul class="small">
-        <li>Peer-reviewed publication in <em>BMJ Paediatrics Open</em> (2025)</li>
-        <li>Systematic review accepted by <em>Journal of Robotic Surgery</em></li>
-        <li>Open to surgery-focused research collaboration</li>
-      </ul>
-    </aside>
+      <section id="outputs" class="card" style="grid-column:1 / -1;">
+        <h2>Research outputs</h2>
+
+        <h3 class="small" style="margin:14px 0 6px;">Journal articles</h3>
+        <div class="list">
+          <div class="item">
+            <strong>
+              <a href="https://doi.org/10.1136/bmjpo-2025-004030">
+                Burnout among paediatric surgeons: a systematic review and meta-analysis
+              </a>
+            </strong>
+            <div class="meta">
+              BMJ Paediatrics Open · 2025 · Published · DOI:
+              <a href="https://doi.org/10.1136/bmjpo-2025-004030">10.1136/bmjpo-2025-004030</a>
+            </div>
+            <div class="meta">Summary: pooled prevalence estimate and synthesis of contributing and protective factors.</div>
+          </div>
+
+          <div class="item">
+            <strong>
+              Assessing effectiveness and skill transferability in multi-platform simulated training for robotic surgical skills: a systematic review
+            </strong>
+            <div class="meta">Journal of Robotic Surgery · Accepted (in press)</div>
+            <div class="meta">Summary: evidence on cross-platform transfer in simulated training; implications for curriculum design.</div>
+          </div>
+        </div>
+
+        <h3 class="small" style="margin:18px 0 6px;">Posters &amp; conference papers</h3>
+        <div class="list">
+          <div class="item">
+            <strong>
+              <a href="https://www.researchgate.net/publication/392558138_Bimanual_Dexterity_as_an_Objective_Marker_of_Robotic_Surgical_Expertise_for_a_Machine_Learning_Model">
+                Bimanual Dexterity as an Objective Marker of Robotic Surgical Expertise for a Machine Learning Model
+              </a>
+            </strong>
+            <div class="meta">Poster · RCSEd Triennial &amp; ICOSET Conference (Edinburgh) · 2025 · Presenter: Callum Pearse</div>
+          </div>
+
+          <div class="item">
+            <strong>
+              <a href="https://www.researchgate.net/publication/391612289_Hands_On_A_Comparative_Analysis_of_Left-_and_Right-Hand_Workspaces_in_Surgical_Robotic_Skills_Training">
+                Hands On: A Comparative Analysis of Left- and Right-Hand Workspaces in Surgical Robotic Skills Training
+              </a>
+            </strong>
+            <div class="meta">Conference paper · Hamlyn Symposium of Medical Robotics (London) · 2025 · Presented by a co-author</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="card" style="grid-column:1 / -1;">
+        <h2>Contact</h2>
+        <p class="muted">For academic collaboration or research enquiries:</p>
+        <div class="btnrow">
+          <a class="btn primary" href="mailto:callum.pearse@doctors.org.uk"><span class="dot"></span>Contact me</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Callum Pearse · callumpearse.co.uk
+    </footer>
   </div>
-</header>
 
-<footer>
-  © <span id="y"></span> Callum Pearse · callumpearse.co.uk
-</footer>
-
-</div>
-
-<script>
-document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
