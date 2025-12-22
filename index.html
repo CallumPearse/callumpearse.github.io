@@ -7,7 +7,7 @@
   <title>Callum Pearse</title>
   <meta name="description" content="Academic website of Callum Pearse: surgical research, surgical education, robotics, and workforce wellbeing." />
 
-  <!-- Favicon (robust) -->
+  <!-- Favicon -->
   <link rel="icon" href="/assets/favicon.png" type="image/png">
   <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/favicon.png">
@@ -47,8 +47,8 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      margin-bottom:26px;
-      gap:16px;
+      margin-bottom:36px; /* more breathing room for large logo */
+      gap:24px;
     }
 
     .nav-left{
@@ -57,11 +57,11 @@
       min-width:0;
     }
 
-    /* WIDE LOGO: large + responsive, no distortion */
+    /* ===== LOGO: DOUBLED SIZE ===== */
     .nav-left img{
-      height:72px;            /* desktop */
+      height:168px;          /* doubled from 84px */
       width:auto;
-      max-width:560px;        /* allow wide wordmark */
+      max-width:1280px;      /* doubled from 640px */
       object-fit:contain;
       display:block;
     }
@@ -70,25 +70,30 @@
       display:flex;
       gap:18px;
       flex-wrap:wrap;
-      font-size:13px;         /* slightly smaller so logo feels primary */
+      font-size:13px;
     }
 
     .nav a{color:var(--muted)}
     .nav a:hover{color:var(--text); text-decoration:none}
 
-    @media (max-width: 900px){
-      .nav-left img{height:168px; max-width:1280px;}
+    /* Tablet */
+    @media (max-width: 1100px){
+      .nav-left img{
+        height:140px;
+        max-width:1040px;
+      }
     }
 
-    @media (max-width: 600px){
+    /* Mobile */
+    @media (max-width: 700px){
       .nav{
         flex-direction:column;
         align-items:flex-start;
-        gap:14px;
+        gap:16px;
       }
       .nav-left img{
-        height:54px;
-        max-width:420px;
+        height:120px;
+        max-width:100%;
       }
       .nav-right{gap:12px;}
     }
@@ -219,24 +224,10 @@
       text-decoration:none;
     }
 
-    .btn:hover{background: rgba(0,0,0,.22); text-decoration:none}
-
-    .dot{
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:#9cc2ff;
-      display:inline-block;
-    }
-
     .btn.primary{
       border-color: rgba(156,194,255,.35);
       background: rgba(156,194,255,.14);
       padding:12px 14px;
-    }
-
-    .btn.primary:hover{
-      background: rgba(156,194,255,.22);
     }
 
     footer{
@@ -250,19 +241,20 @@
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <nav class="nav">
-        <div class="nav-left">
-          <img src="assets/logo.png" alt="Callum Pearse">
-        </div>
-        <div class="nav-right">
-          <a href="#about">About</a>
-          <a href="#research">Research</a>
-          <a href="#outputs">Outputs</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+<div class="wrap">
+
+<header>
+  <nav class="nav">
+    <div class="nav-left">
+      <img src="assets/logo.png" alt="Callum Pearse">
+    </div>
+    <div class="nav-right">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#outputs">Outputs</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
       <div class="hero">
         <section class="card">
