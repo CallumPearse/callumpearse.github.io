@@ -47,8 +47,8 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      margin-bottom:36px; /* more breathing room for large logo */
-      gap:24px;
+      margin-bottom:30px;
+      gap:20px;
     }
 
     .nav-left{
@@ -57,18 +57,18 @@
       min-width:0;
     }
 
-    /* ===== LOGO: DOUBLED SIZE ===== */
+    /* ===== LOGO: HALFWAY SIZE ===== */
     .nav-left img{
-      height:168px;          /* doubled from 84px */
+      height:126px;          /* halfway between 84px and 168px */
       width:auto;
-      max-width:1280px;      /* doubled from 640px */
+      max-width:960px;       /* halfway between 640px and 1280px */
       object-fit:contain;
       display:block;
     }
 
     .nav-right{
       display:flex;
-      gap:18px;
+      gap:16px;
       flex-wrap:wrap;
       font-size:13px;
     }
@@ -77,25 +77,27 @@
     .nav a:hover{color:var(--text); text-decoration:none}
 
     /* Tablet */
-    @media (max-width: 1100px){
+    @media (max-width: 1000px){
       .nav-left img{
-        height:140px;
-        max-width:1040px;
+        height:108px;
+        max-width:820px;
       }
     }
 
     /* Mobile */
-    @media (max-width: 700px){
+    @media (max-width: 650px){
       .nav{
         flex-direction:column;
         align-items:flex-start;
-        gap:16px;
+        gap:14px;
       }
       .nav-left img{
-        height:120px;
+        height:96px;
         max-width:100%;
       }
-      .nav-right{gap:12px;}
+      .nav-right{
+        gap:12px;
+      }
     }
 
     .hero{
