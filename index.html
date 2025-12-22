@@ -7,12 +7,15 @@
   <title>Callum Pearse</title>
   <meta name="description" content="Academic website of Callum Pearse: surgical research, surgical education, robotics, and workforce wellbeing." />
 
+  <!-- Canonical -->
+  <link rel="canonical" href="https://callumpearse.co.uk/" />
+
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon.png" type="image/png">
   <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/favicon.png">
 
-  <!-- Basic citation / scholarly metadata -->
+  <!-- Basic scholarly meta (helps some crawlers) -->
   <meta name="citation_author" content="Callum Pearse">
   <meta name="citation_title" content="Burnout among paediatric surgeons: a systematic review and meta-analysis">
   <meta name="citation_publication_date" content="2025">
@@ -209,7 +212,7 @@
       margin-top:12px;
     }
 
-    /* All buttons use the "contact-style" look */
+    /* All buttons use the “contact-style” look */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -243,16 +246,32 @@
       font-size:13px;
     }
     .footerlinks a{color:var(--muted)}
-    .footerlinks a:hover{color:var(--text); text-decoration:none}
+    .footerlinks a:hover{color:var(--text);text-decoration:none}
   </style>
 
-  <!-- Structured data (schema.org) for scholarly outputs -->
+  <!-- (2) Structured data: Person -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Person",
+    "@id":"https://callumpearse.co.uk/#callum-pearse",
     "name":"Callum Pearse",
     "url":"https://callumpearse.co.uk/",
+    "image":"https://callumpearse.co.uk/assets/headshot.jpg",
+    "jobTitle":"Medical Student",
+    "affiliation":{
+      "@type":"Organization",
+      "name":"King’s College London"
+    },
+    "knowsAbout":[
+      "Surgical education",
+      "Robotic surgery",
+      "Simulation-based training",
+      "Technical skill acquisition",
+      "Objective performance assessment",
+      "Surgeon wellbeing",
+      "Workforce sustainability"
+    ],
     "sameAs":[
       "https://www.linkedin.com/in/callum-pearse-/",
       "https://www.researchgate.net/profile/Callum-Pearse-3",
@@ -263,19 +282,29 @@
   }
   </script>
 
+  <!-- (2) Structured data: ScholarlyArticle (published) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"ScholarlyArticle",
+    "@id":"https://doi.org/10.1136/bmjpo-2025-004030",
     "name":"Burnout among paediatric surgeons: a systematic review and meta-analysis",
+    "headline":"Burnout among paediatric surgeons: a systematic review and meta-analysis",
     "url":"https://doi.org/10.1136/bmjpo-2025-004030",
     "identifier":"https://doi.org/10.1136/bmjpo-2025-004030",
     "doi":"10.1136/bmjpo-2025-004030",
+    "datePublished":"2025",
     "isPartOf":{
       "@type":"Periodical",
       "name":"BMJ Paediatrics Open"
     },
-    "datePublished":"2025"
+    "author":[
+      {
+        "@type":"Person",
+        "@id":"https://callumpearse.co.uk/#callum-pearse",
+        "name":"Callum Pearse"
+      }
+    ]
   }
   </script>
 
@@ -435,7 +464,6 @@
 <footer>
   © <span id="y"></span> Callum Pearse · callumpearse.co.uk
 
-  <!-- Footer quick links -->
   <div class="footerlinks">
     <a href="#about">About</a>
     <a href="#research">Research</a>
