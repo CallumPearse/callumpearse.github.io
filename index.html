@@ -13,9 +13,9 @@
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
-<link rel="apple-touch-icon" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/favicon-32.png">
 
   <!-- Basic scholarly meta (helps some crawlers) -->
   <meta name="citation_author" content="Callum Pearse">
@@ -24,6 +24,14 @@
   <meta name="citation_journal_title" content="BMJ Paediatrics Open">
   <meta name="citation_doi" content="10.1136/bmjpo-2025-004030">
   <meta name="citation_public_url" content="https://doi.org/10.1136/bmjpo-2025-004030">
+
+  <!-- ADDED: Basic scholarly meta for Journal of Robotic Surgery paper -->
+  <meta name="citation_author" content="Callum Pearse">
+  <meta name="citation_title" content="Assessing Effectiveness and Skill Transferability in Multi-Platform Simulated Training for Robotic Surgical Skills: A Systematic Review">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_journal_title" content="Journal of Robotic Surgery">
+  <meta name="citation_doi" content="10.1007/s11701-025-03090-x">
+  <meta name="citation_public_url" content="https://doi.org/10.1007/s11701-025-03090-x">
 
   <style>
     :root{
@@ -284,7 +292,7 @@
   }
   </script>
 
-  <!-- (2) Structured data: ScholarlyArticle (published) -->
+  <!-- (2) Structured data: ScholarlyArticle (published - BMJ PO) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -299,6 +307,35 @@
     "isPartOf":{
       "@type":"Periodical",
       "name":"BMJ Paediatrics Open"
+    },
+    "author":[
+      {
+        "@type":"Person",
+        "@id":"https://callumpearse.co.uk/#callum-pearse",
+        "name":"Callum Pearse"
+      }
+    ]
+  }
+  </script>
+
+  <!-- ADDED: Structured data: ScholarlyArticle (published - Journal of Robotic Surgery) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ScholarlyArticle",
+    "@id":"https://doi.org/10.1007/s11701-025-03090-x",
+    "name":"Assessing Effectiveness and Skill Transferability in Multi-Platform Simulated Training for Robotic Surgical Skills: A Systematic Review",
+    "headline":"Assessing Effectiveness and Skill Transferability in Multi-Platform Simulated Training for Robotic Surgical Skills: A Systematic Review",
+    "url":"https://doi.org/10.1007/s11701-025-03090-x",
+    "identifier":"https://doi.org/10.1007/s11701-025-03090-x",
+    "doi":"10.1007/s11701-025-03090-x",
+    "datePublished":"2025",
+    "sameAs":[
+      "https://link.springer.com/article/10.1007/s11701-025-03090-x"
+    ],
+    "isPartOf":{
+      "@type":"Periodical",
+      "name":"Journal of Robotic Surgery"
     },
     "author":[
       {
@@ -368,7 +405,7 @@
       </p>
       <ul class="small">
         <li>Peer-reviewed publication in <em>BMJ Paediatrics Open</em> (2025)</li>
-        <li>Systematic review accepted by <em>Journal of Robotic Surgery</em></li>
+        <li>Peer-reviewed publication in <em>Journal of Robotic Surgery</em> (2025)</li>
         <li>Open to surgery-focused research collaboration</li>
       </ul>
     </aside>
@@ -404,6 +441,24 @@
 
     <h3 class="small" style="margin:14px 0 6px;">Journal articles</h3>
     <div class="list">
+
+      <!-- UPDATED: Journal of Robotic Surgery paper placed first + DOI + SpringerLink -->
+      <div class="item">
+        <strong>
+          <a href="https://doi.org/10.1007/s11701-025-03090-x">
+            Assessing Effectiveness and Skill Transferability in Multi-Platform Simulated Training for Robotic Surgical Skills: A Systematic Review
+          </a>
+        </strong>
+        <div class="meta">
+          Journal of Robotic Surgery · 2025 ·
+          DOI: <a href="https://doi.org/10.1007/s11701-025-03090-x">10.1007/s11701-025-03090-x</a>
+          · <a href="https://link.springer.com/article/10.1007/s11701-025-03090-x">SpringerLink</a>
+        </div>
+        <p class="summary">
+          Systematic review evaluating cross-platform skill transferability across robotic systems in simulated settings, with implications for training design and transition between platforms.
+        </p>
+      </div>
+
       <div class="item">
         <strong>
           <a href="https://doi.org/10.1136/bmjpo-2025-004030">
@@ -416,33 +471,25 @@
         </p>
       </div>
 
-      <div class="item">
-        <strong>
-          Assessing effectiveness and skill transferability in multi-platform simulated training for robotic surgical skills: a systematic review
-        </strong>
-        <div class="meta">Journal of Robotic Surgery · Accepted (in press)</div>
-        <p class="summary">
-          Evidence synthesis examining how simulated robotic training translates across platforms, with implications for curriculum design and assessment.
-        </p>
-      </div>
     </div>
 
     <h3 class="small" style="margin:18px 0 6px;">Posters &amp; conference papers</h3>
     <div class="list">
       <div class="item">
-  <strong>
-    <a href="https://doi.org/10.1016/s2666-1683(25)00543-9">
-      Acquisition and analysis of a multimodal dataset for skill evaluation across two robotic surgical systems
-    </a>
-  </strong>
-  <div class="meta">
-    Conference poster · 22nd Meeting of the EAU Robotic Urology Section (London) · 2025 ·
-    DOI: <a href="https://doi.org/10.1016/s2666-1683(25)00543-9">10.1016/s2666-1683(25)00543-9</a>
-  </div>
-  <p class="summary">
-    Multimodal dataset capturing kinematic and complementary data streams across two robotic surgical platforms to support objective skill evaluation and performance analytics.
-  </p>
-</div>
+        <strong>
+          <a href="https://doi.org/10.1016/s2666-1683(25)00543-9">
+            Acquisition and analysis of a multimodal dataset for skill evaluation across two robotic surgical systems
+          </a>
+        </strong>
+        <div class="meta">
+          Conference poster · 22nd Meeting of the EAU Robotic Urology Section (London) · 2025 ·
+          DOI: <a href="https://doi.org/10.1016/s2666-1683(25)00543-9">10.1016/s2666-1683(25)00543-9</a>
+        </div>
+        <p class="summary">
+          Multimodal dataset capturing kinematic and complementary data streams across two robotic surgical platforms to support objective skill evaluation and performance analytics.
+        </p>
+      </div>
+
       <div class="item">
         <strong>
           <a href="https://www.researchgate.net/publication/392558138_Bimanual_Dexterity_as_an_Objective_Marker_of_Robotic_Surgical_Expertise_for_a_Machine_Learning_Model">
