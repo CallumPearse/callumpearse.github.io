@@ -4,37 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Callum Pearse | Final-Year Medical Student at King’s College London | Surgical Education & Robotics</title>
+  <title>Callum Pearse | Final-Year Medical Student | King’s College London | Robotic Surgery Research</title>
 
   <meta
     name="description"
-    content="Callum Pearse is a final-year medical student at King’s College London working in surgical education, robotic surgery, simulation-based training, objective performance assessment, and surgeon wellbeing. View publications, conference presentations, awards, and research outputs."
+    content="Callum Pearse is a final-year medical student at King’s College London undertaking research in robotic surgery, surgical education, simulation-based training, objective performance assessment, and surgeon wellbeing."
   />
 
   <meta name="author" content="Callum Pearse">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="color-scheme" content="dark">
 
+  <!-- Canonical -->
   <link rel="canonical" href="https://callumpearse.co.uk/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="Callum Pearse | Final-Year Medical Student &amp; Surgical Research">
-  <meta property="og:description" content="Research in surgical education, robotic surgical training, objective performance assessment, and surgeon wellbeing.">
+  <meta property="og:title" content="Callum Pearse | Final-Year Medical Student &amp; Robotic Surgery Research">
+  <meta property="og:description" content="Research in robotic surgery, surgical education, simulation-based training, objective performance assessment, and surgeon wellbeing.">
   <meta property="og:url" content="https://callumpearse.co.uk/">
-  <meta property="og:image" content="https://callumpearse.co.uk/assets/headshot.jpg">
+  <meta property="og:image" content="https://callumpearse.co.uk/assets/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Callum Pearse — final-year medical student and surgical researcher">
   <meta property="og:site_name" content="Callum Pearse">
   <meta property="og:locale" content="en_GB">
+  <meta property="profile:first_name" content="Callum">
+  <meta property="profile:last_name" content="Pearse">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Callum Pearse | Final-Year Medical Student &amp; Surgical Research">
-  <meta name="twitter:description" content="Research in surgical education, robotic surgical training, objective performance assessment, and surgeon wellbeing.">
-  <meta name="twitter:image" content="https://callumpearse.co.uk/assets/headshot.jpg">
+  <meta name="twitter:title" content="Callum Pearse | Final-Year Medical Student &amp; Robotic Surgery Research">
+  <meta name="twitter:description" content="Research in robotic surgery, surgical education, simulation-based training, objective performance assessment, and surgeon wellbeing.">
+  <meta name="twitter:image" content="https://callumpearse.co.uk/assets/og-card.png">
+  <meta name="twitter:image:alt" content="Callum Pearse — final-year medical student and surgical researcher">
 
-  <!-- Favicon -->
+  <!-- Icons -->
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
   <link rel="apple-touch-icon" href="/assets/favicon-32.png">
+  <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#0b1220">
 
   <style>
     :root{
@@ -50,6 +60,10 @@
 
     *{box-sizing:border-box}
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
@@ -61,8 +75,21 @@
       line-height:1.6;
     }
 
-    a{color:var(--link);text-decoration:none}
-    a:hover{text-decoration:underline}
+    a{
+      color:var(--link);
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
+    }
+
+    a:focus-visible,
+    summary:focus-visible{
+      outline:2px solid var(--link);
+      outline-offset:4px;
+      border-radius:4px;
+    }
 
     .wrap{
       max-width:var(--max);
@@ -70,7 +97,9 @@
       padding:32px 18px 60px;
     }
 
-    header{padding:28px 0 18px}
+    header{
+      padding:28px 0 18px;
+    }
 
     .nav{
       display:flex;
@@ -95,7 +124,9 @@
       font-size:13px;
     }
 
-    .nav a{color:var(--muted)}
+    .nav a{
+      color:var(--muted);
+    }
 
     .nav a:hover{
       color:var(--text);
@@ -121,7 +152,9 @@
         max-width:100%;
       }
 
-      .nav-right{gap:12px}
+      .nav-right{
+        gap:12px;
+      }
     }
 
     .hero{
@@ -132,7 +165,9 @@
     }
 
     @media (max-width:860px){
-      .hero{grid-template-columns:1fr}
+      .hero{
+        grid-template-columns:1fr;
+      }
     }
 
     .card{
@@ -160,10 +195,17 @@
       line-height:1.35;
     }
 
-    p{margin:0 0 12px}
+    p{
+      margin:0 0 12px;
+    }
 
-    .muted{color:var(--muted)}
-    .small{font-size:14px}
+    .muted{
+      color:var(--muted);
+    }
+
+    .small{
+      font-size:14px;
+    }
 
     .profile{
       display:flex;
@@ -250,7 +292,9 @@
     }
 
     @media (max-width:860px){
-      .grid{grid-template-columns:1fr}
+      .grid{
+        grid-template-columns:1fr;
+      }
     }
 
     ul{
@@ -258,7 +302,9 @@
       padding-left:18px;
     }
 
-    li{margin:8px 0}
+    li{
+      margin:8px 0;
+    }
 
     .list{
       display:flex;
@@ -349,6 +395,14 @@
       font-size:13px;
     }
 
+    .footer-meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
     .footerlinks{
       display:flex;
       flex-wrap:wrap;
@@ -357,11 +411,19 @@
       font-size:13px;
     }
 
-    .footerlinks a{color:var(--muted)}
+    .footerlinks a{
+      color:var(--muted);
+    }
 
     .footerlinks a:hover{
       color:var(--text);
       text-decoration:none;
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      html{
+        scroll-behavior:auto;
+      }
     }
   </style>
 
@@ -387,8 +449,9 @@
     "@type":"ProfilePage",
     "@id":"https://callumpearse.co.uk/#profile-page",
     "url":"https://callumpearse.co.uk/",
-    "name":"Callum Pearse | Final-Year Medical Student and Surgical Researcher",
-    "description":"Academic profile of Callum Pearse, a final-year medical student at King’s College London with interests in surgical education, robotic surgery, simulation-based training and objective performance assessment.",
+    "name":"Callum Pearse | Final-Year Medical Student and Robotic Surgery Researcher",
+    "description":"Academic profile of Callum Pearse, a final-year medical student at King’s College London undertaking research in robotic surgery, surgical education, simulation-based training and objective performance assessment.",
+    "dateModified":"2026-08-01",
     "isPartOf":{
       "@id":"https://callumpearse.co.uk/#website"
     },
@@ -405,13 +468,16 @@
     "@type":"Person",
     "@id":"https://callumpearse.co.uk/#callum-pearse",
     "name":"Callum Pearse",
+    "givenName":"Callum",
+    "familyName":"Pearse",
     "url":"https://callumpearse.co.uk/",
     "image":"https://callumpearse.co.uk/assets/headshot.jpg",
     "email":"mailto:contact@callumpearse.co.uk",
     "jobTitle":"Final-Year Medical Student",
     "affiliation":{
-      "@type":"Organization",
-      "name":"King’s College London"
+      "@type":"CollegeOrUniversity",
+      "name":"King’s College London",
+      "url":"https://www.kcl.ac.uk/"
     },
     "award":[
       "Worshipful Company of Barbers’ Prize for Academic Excellence, 2021–22",
@@ -424,9 +490,12 @@
       "Simulation-based training",
       "Technical skill acquisition",
       "Objective performance assessment",
+      "Motion-derived performance analytics",
       "Machine learning in surgical assessment",
       "Surgeon wellbeing",
-      "Workforce sustainability"
+      "Workforce sustainability",
+      "Systematic reviews",
+      "Meta-analysis"
     ],
     "sameAs":[
       "https://www.linkedin.com/in/callum-pearse-/",
@@ -593,10 +662,10 @@
 <div class="wrap">
 
 <header>
-  <nav class="nav">
+  <nav class="nav" aria-label="Primary navigation">
     <div class="nav-left">
-      <a href="/" aria-label="Home">
-        <img src="assets/logo.png" alt="Callum Pearse">
+      <a href="/" aria-label="Callum Pearse homepage">
+        <img src="/assets/logo.png" alt="Callum Pearse">
       </a>
     </div>
 
@@ -613,7 +682,13 @@
   <div class="hero">
     <section class="card">
       <div class="profile">
-        <img src="assets/headshot.jpg" alt="Callum Pearse">
+        <img
+          src="/assets/headshot.jpg"
+          alt="Callum Pearse"
+          width="110"
+          height="110"
+          fetchpriority="high"
+        >
         <h1>Callum Pearse</h1>
       </div>
 
@@ -622,8 +697,10 @@
       </p>
 
       <p class="muted">
-        Alongside my studies, I contribute to research in surgical education and objective assessment of operative performance,
-        with interests spanning robotic skill acquisition, simulation-based training, and workforce wellbeing.
+        Alongside my medical studies, I contribute to research spanning surgical education, robotic surgery,
+        objective technical-performance assessment and surgeon wellbeing, with particular interests in
+        simulation-based training, motion-derived performance analytics and machine-learning approaches
+        to assessment.
       </p>
 
       <div class="stats" aria-label="Research output summary">
@@ -651,16 +728,16 @@
       <div class="badges">
         <span class="badge">Systematic reviews &amp; meta-analysis</span>
         <span class="badge">Surgical education</span>
-        <span class="badge">Robotics</span>
+        <span class="badge">Robotic surgery</span>
         <span class="badge">Workforce wellbeing</span>
       </div>
 
       <div class="btnrow">
-        <a class="btn" href="https://www.linkedin.com/in/callum-pearse-/">LinkedIn</a>
-        <a class="btn" href="https://www.researchgate.net/profile/Callum-Pearse-3">ResearchGate</a>
-        <a class="btn" href="https://orcid.org/0009-0000-7396-7595">ORCID</a>
-        <a class="btn" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en">Google Scholar</a>
-        <a class="btn" href="https://gb.bold.pro/my/callum-pearse">Bold.pro</a>
+        <a class="btn" rel="me" href="https://www.linkedin.com/in/callum-pearse-/">LinkedIn</a>
+        <a class="btn" rel="me" href="https://www.researchgate.net/profile/Callum-Pearse-3">ResearchGate</a>
+        <a class="btn" rel="me" href="https://orcid.org/0009-0000-7396-7595">ORCID</a>
+        <a class="btn" rel="me" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&amp;hl=en">Google Scholar</a>
+        <a class="btn" rel="me" href="https://gb.bold.pro/my/callum-pearse">Bold.pro</a>
       </div>
     </section>
 
@@ -675,7 +752,7 @@
         <li>Peer-reviewed publications in <em>Journal of Robotic Surgery</em> and <em>BMJ Paediatrics Open</em></li>
         <li>Published first-author conference abstract in <em>BJS</em> (2026)</li>
         <li>Oral presentations at the ASiT Annual Conference and RCS England Future of Surgery Festival</li>
-        <li>Poster presentation (presenting author; forthcoming) at ERUS26 in Padua</li>
+        <li>Poster presentation as presenting author at ERUS26 in Padua, September 2026</li>
         <li>Two-time recipient of the Worshipful Company of Barbers’ Prize for Academic Excellence</li>
       </ul>
     </aside>
@@ -687,17 +764,16 @@
     <h2>About</h2>
 
     <p>
-      I am a final-year medical student at King’s College London with academic interests in surgical research,
-      surgical education, robotic surgery, and technology-enabled assessment. My current work focuses on
-      objective evaluation of robotic surgical skill, motion-derived performance metrics, simulation-based
-      training, and evidence synthesis.
+      I am a final-year medical student at King’s College London undertaking research in surgical education,
+      robotic surgery and technology-enabled assessment. My work focuses particularly on objective evaluation
+      of robotic surgical skill, motion-derived performance metrics, simulation-based training and evidence synthesis.
     </p>
 
     <p class="muted">
       I hope to pursue a career in academic surgery, combining clinical practice with research that improves
-      the quality, objectivity, and accessibility of surgical training. I am particularly interested in work
-      that translates methodological rigour and emerging technology into meaningful improvements in education,
-      workforce sustainability, and patient care.
+      the quality, objectivity and accessibility of surgical training. I am especially interested in translating
+      robust methodology and emerging technology into meaningful improvements in education, workforce sustainability
+      and patient care.
     </p>
   </section>
 
@@ -731,14 +807,14 @@
     </div>
   </section>
 
-  <section class="card">
-    <h2>Google Scholar</h2>
+  <section class="card" aria-labelledby="scholar-heading">
+    <h2 id="scholar-heading">Google Scholar</h2>
 
     <p class="small muted">
-      Current citation metrics. These figures are updated periodically and may differ slightly from the live Google Scholar profile.
+      Citation metrics updated August 2026. Figures may differ slightly from the live Google Scholar profile.
     </p>
 
-    <div class="scholar-metrics">
+    <div class="scholar-metrics" aria-label="Google Scholar citation metrics">
       <div class="scholar-metric">
         <strong>5</strong>
         <span>Citations</span>
@@ -756,7 +832,11 @@
     </div>
 
     <div class="btnrow">
-      <a class="btn" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en">
+      <a
+        class="btn"
+        rel="me"
+        href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&amp;hl=en"
+      >
         View Google Scholar
       </a>
     </div>
@@ -843,7 +923,7 @@
 
         <p class="summary">
           Published conference abstract describing a multimodal dataset across two robotic surgical platforms
-          to support objective skill evaluation, training assessment, and performance analytics.
+          to support objective skill evaluation, training assessment and performance analytics.
         </p>
       </div>
     </div>
@@ -975,7 +1055,7 @@
     <h2>Contact</h2>
 
     <p class="muted">
-      For academic collaboration, research enquiries, or professional correspondence:
+      For academic collaboration, research enquiries or professional correspondence:
     </p>
 
     <div class="btnrow">
@@ -985,7 +1065,10 @@
 </main>
 
 <footer>
-  © <span id="y"></span> Callum Pearse · callumpearse.co.uk
+  <div class="footer-meta">
+    <span>© <span id="y"></span> Callum Pearse · callumpearse.co.uk</span>
+    <span>Last updated: August 2026</span>
+  </div>
 
   <div class="footerlinks">
     <a href="#about">About</a>
@@ -994,10 +1077,10 @@
     <a href="#outputs">Outputs</a>
     <a href="/publications.html">Publications</a>
     <a href="#contact">Contact</a>
-    <a href="https://www.linkedin.com/in/callum-pearse-/">LinkedIn</a>
-    <a href="https://orcid.org/0009-0000-7396-7595">ORCID</a>
-    <a href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en">Google Scholar</a>
-    <a href="https://www.researchgate.net/profile/Callum-Pearse-3">ResearchGate</a>
+    <a rel="me" href="https://www.linkedin.com/in/callum-pearse-/">LinkedIn</a>
+    <a rel="me" href="https://orcid.org/0009-0000-7396-7595">ORCID</a>
+    <a rel="me" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&amp;hl=en">Google Scholar</a>
+    <a rel="me" href="https://www.researchgate.net/profile/Callum-Pearse-3">ResearchGate</a>
   </div>
 </footer>
 
