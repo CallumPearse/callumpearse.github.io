@@ -5,10 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <meta name="author" content="Callum Pearse">
-  
+
   <title>Publications | Callum Pearse</title>
-  <meta name="description" content="Publications and research outputs by Callum Pearse (King’s College London): journal articles, conference papers, oral presentations, and posters." />
+  <meta name="description" content="Publications and research outputs by Callum Pearse, a final-year medical student at King’s College London: journal articles, published conference abstracts, oral presentations, posters, and conference papers." />
   <link rel="canonical" href="https://callumpearse.co.uk/publications.html" />
+
+  <!-- Open Graph and social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Publications &amp; Research Outputs | Callum Pearse">
+  <meta property="og:description" content="Journal articles, published conference abstracts, oral presentations, posters, and research outputs by Callum Pearse.">
+  <meta property="og:url" content="https://callumpearse.co.uk/publications.html">
+  <meta property="og:image" content="https://callumpearse.co.uk/assets/logo.png">
+  <meta property="og:site_name" content="Callum Pearse">
+  <meta property="og:locale" content="en_GB">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Publications &amp; Research Outputs | Callum Pearse">
+  <meta name="twitter:description" content="Journal articles, published conference abstracts, oral presentations, posters, and research outputs by Callum Pearse.">
+  <meta name="twitter:image" content="https://callumpearse.co.uk/assets/logo.png">
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
@@ -83,10 +97,12 @@
         align-items:flex-start;
         gap:14px;
       }
+
       .nav-left img{
         height:96px;
         max-width:100%;
       }
+
       .nav-right{gap:12px;}
     }
 
@@ -174,13 +190,16 @@
       border-top:1px solid var(--border);
       padding-top:10px;
     }
+
     summary{
       cursor:pointer;
       color:var(--link);
       list-style:none;
       font-size:14px;
     }
+
     summary::-webkit-details-marker{display:none}
+
     .abstract{
       margin-top:10px;
       color:var(--muted);
@@ -213,10 +232,27 @@
       margin-top:10px;
       font-size:13px;
     }
+
     .footerlinks a{color:var(--muted)}
     .footerlinks a:hover{color:var(--text);text-decoration:none}
   </style>
 
+  <!-- Structured data: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://callumpearse.co.uk/#website",
+    "url": "https://callumpearse.co.uk/",
+    "name": "Callum Pearse",
+    "alternateName": "Callum Pearse Academic Website",
+    "publisher": {
+      "@id": "https://callumpearse.co.uk/#callum-pearse"
+    }
+  }
+  </script>
+
+  <!-- Structured data: CollectionPage -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -224,6 +260,9 @@
     "@id":"https://callumpearse.co.uk/publications.html#publications",
     "name":"Publications | Callum Pearse",
     "url":"https://callumpearse.co.uk/publications.html",
+    "isPartOf":{
+      "@id":"https://callumpearse.co.uk/#website"
+    },
     "about":{
       "@type":"Person",
       "@id":"https://callumpearse.co.uk/#callum-pearse",
@@ -232,6 +271,7 @@
   }
   </script>
 
+  <!-- Structured data: Person -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -239,6 +279,12 @@
     "@id":"https://callumpearse.co.uk/#callum-pearse",
     "name":"Callum Pearse",
     "url":"https://callumpearse.co.uk/",
+    "image":"https://callumpearse.co.uk/assets/headshot.jpg",
+    "jobTitle":"Final-Year Medical Student",
+    "affiliation":{
+      "@type":"Organization",
+      "name":"King’s College London"
+    },
     "sameAs":[
       "https://www.linkedin.com/in/callum-pearse-/",
       "https://www.researchgate.net/profile/Callum-Pearse-3",
@@ -260,6 +306,7 @@
         <img src="assets/logo.png" alt="Callum Pearse">
       </a>
     </div>
+
     <div class="nav-right">
       <a href="/#about">About</a>
       <a href="/#research">Research</a>
@@ -271,8 +318,11 @@
 
   <section class="card">
     <h1>Publications &amp; Research Outputs</h1>
+
     <p class="muted">
-      Journal articles, conference papers, oral presentations, and posters. Abstracts are shown where permissible; where not, I provide a summary and link to the publisher or ResearchGate record.
+      Journal articles, published conference abstracts, oral presentations, conference papers, and posters.
+      Abstracts are shown where permissible; where not, I provide a summary and link to the publisher,
+      DOI, official conference page, or ResearchGate record.
     </p>
 
     <div class="btnrow">
@@ -289,7 +339,7 @@
 
 <main>
   <section class="card section" id="journal-articles">
-    <h2>Journal articles</h2>
+    <h2>Journal Articles</h2>
 
     <div class="list">
       <article class="item">
@@ -307,7 +357,8 @@
         </div>
 
         <p class="muted small">
-          Published systematic review evaluating cross-platform skill transferability across robotic systems in simulated settings, with implications for training design during early proficiency development.
+          Published systematic review evaluating cross-platform skill transferability across robotic systems in simulated settings,
+          with implications for training design during early proficiency development.
         </p>
 
         <details>
@@ -348,7 +399,8 @@ Skill transferability was demonstrated in cross-platform simulated training amon
         </div>
 
         <p class="muted small">
-          Published systematic review and meta-analysis quantifying burnout prevalence among paediatric surgeons and exploring contributing and protective factors.
+          Published systematic review and meta-analysis quantifying burnout prevalence among paediatric surgeons
+          and exploring contributing and protective factors.
         </p>
 
         <details>
@@ -376,48 +428,96 @@ Nearly one in three paediatric surgeons experience burnout. Although concerning,
     </div>
   </section>
 
+  <section class="card section" id="published-conference-abstracts">
+    <h2>Published Conference Abstracts</h2>
+
+    <div class="list">
+      <article class="item" id="asit-precision-in-motion-2026">
+        <h3>
+          <a href="https://doi.org/10.1093/bjs/znag063.019">
+            Precision in Motion: Objective Hand-Tracking Kinematic Metrics Correlate With Reviewer-Assessed Robotic Surgical Skill – A Pilot Longitudinal Study
+          </a>
+        </h3>
+
+        <div class="meta">
+          Pearse C, Dave C, Liu WME, Khan I, Khanna R, Quarez J, Li Y, Challacombe B, Dasgupta P, Granados A, Raison N.
+          <em>Precision in Motion: Objective Hand-Tracking Kinematic Metrics Correlate With Reviewer-Assessed Robotic Surgical Skill – A Pilot Longitudinal Study.</em>
+          BJS. 2026.
+          DOI: <a href="https://doi.org/10.1093/bjs/znag063.019">10.1093/bjs/znag063.019</a>
+        </div>
+
+        <p class="muted small">
+          Published first-author conference abstract arising from an oral presentation at the ASiT Annual Conference 2026 in Manchester.
+        </p>
+
+        <details>
+          <summary>About this work</summary>
+          <div class="abstract">
+This study investigates whether objective hand-tracking kinematic metrics can serve as reliable correlates of expert reviewer-assessed robotic surgical skill. Using a longitudinal pilot design, the work explores the potential role of motion-based performance analytics in objective assessment, feedback, and progression modelling in robotic surgical training.
+          </div>
+        </details>
+
+        <div class="btnrow">
+          <a class="btn" href="https://doi.org/10.1093/bjs/znag063.019">BJS Abstract (DOI)</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <section class="card section" id="conference">
     <h2>Conference Papers, Posters &amp; Presentations</h2>
 
     <div class="list">
-      <article class="item">
+      <article class="item" id="erus26-hugo-da-vinci">
+        <h3>
+          Robotic surgical skills acquisition and early learning curve progression between the Hugo RAS and Da Vinci X platforms amongst novice trainees
+        </h3>
+
+        <div class="meta">
+          Wai Miu Emma Liu, Charvi Dave, Callum Pearse, Iman Khan, Yang Li, Julien Quarez,
+          Alejandro Granados, Ben Challacombe, Prokar Dasgupta, Nicholas Raison.
+          · Poster presentation (presenting author; forthcoming)
+          · ERUS26: 23rd Annual Meeting of the EAU Robotic Urology Section
+          · Padua, Italy
+          · 9–11 September 2026
+        </div>
+
+        <p class="muted small">
+          Forthcoming poster presentation comparing early robotic surgical skill acquisition and learning-curve progression
+          between the Hugo RAS and Da Vinci X platforms amongst novice trainees.
+        </p>
+
+        <details>
+          <summary>About this presentation</summary>
+          <div class="abstract">
+This work compares early skill acquisition and learning-curve progression amongst novice trainees using the Hugo RAS and Da Vinci X robotic platforms. The study contributes to understanding whether platform-related differences affect early technical development and the design of cross-platform robotic surgical training. Callum Pearse will present the poster at ERUS26 in Padua.
+          </div>
+        </details>
+
+        <div class="btnrow">
+          <a class="btn" href="https://erus.uroweb.org/">ERUS26 Meeting</a>
+        </div>
+      </article>
+
+      <article class="item" id="rcs-learning-from-motion-2026">
         <h3>
           Learning from Motion: A Multi-modal, System-Agnostic Pipeline for Objective Robotic Surgical Training Assessment
         </h3>
 
         <div class="meta">
-          Wai Miu Emma Liu et&nbsp;al. · Oral presentation (presenting author: Callum Pearse) · Future of Surgery Festival · Birmingham, England · 20–21 April 2026
+          Wai Miu Emma Liu et&nbsp;al. · Oral presentation (presented by Callum Pearse)
+          · Future of Surgery Festival · Birmingham, England · 20–21 April 2026
         </div>
 
         <p class="muted small">
-          Accepted oral presentation describing a multi-modal, system-agnostic assessment pipeline for objective robotic surgical training evaluation using motion-derived performance metrics.
+          Completed oral presentation describing a multi-modal, system-agnostic assessment pipeline for objective robotic
+          surgical training evaluation using motion-derived performance metrics.
         </p>
 
         <details>
           <summary>About this presentation</summary>
           <div class="abstract">
-This oral presentation outlines a multi-modal, system-agnostic pipeline for objective robotic surgical training assessment. The approach focuses on motion-derived kinematic metrics and complementary data streams to support objective evaluation, feedback, and progression monitoring across different robotic platforms. Presenting author: Callum Pearse.
-          </div>
-        </details>
-      </article>
-
-      <article class="item">
-        <h3>
-          Precision in Motion: Objective Hand-Tracking Kinematic Metrics Correlate With Reviewer-Assessed Robotic Surgical Skill – A Pilot Longitudinal Study
-        </h3>
-
-        <div class="meta">
-          Pearse C et&nbsp;al. · Oral presentation · ASiT Annual Conference · Manchester, England · 6–8 March 2026 · Abstract to be published in BJS
-        </div>
-
-        <p class="muted small">
-          Oral presentation of a pilot longitudinal study demonstrating correlations between objective hand-tracking kinematic metrics and reviewer-assessed robotic surgical skill. Abstract to be published in the British Journal of Surgery.
-        </p>
-
-        <details>
-          <summary>About this presentation</summary>
-          <div class="abstract">
-This study investigates whether objective hand-tracking kinematic metrics can serve as reliable correlates of expert reviewer-assessed robotic surgical skill. Using a longitudinal pilot design, the work explores the potential role of motion-based performance analytics in objective assessment, feedback, and progression modelling in robotic surgical training.
+This oral presentation, delivered by Callum Pearse, outlined a multi-modal, system-agnostic pipeline for objective robotic surgical training assessment. The approach focuses on motion-derived kinematic metrics and complementary data streams to support objective evaluation, feedback, and progression monitoring across different robotic platforms.
           </div>
         </details>
       </article>
@@ -437,7 +537,8 @@ This study investigates whether objective hand-tracking kinematic metrics can se
         </div>
 
         <p class="muted small">
-          Conference poster describing the acquisition and structure of a multimodal dataset capturing kinematic and complementary data streams across two robotic surgical platforms to support objective skill evaluation research.
+          Conference poster describing the acquisition and structure of a multimodal dataset capturing kinematic
+          and complementary data streams across two robotic surgical platforms to support objective skill evaluation research.
         </p>
 
         <details>
@@ -468,7 +569,8 @@ This poster presents a multimodal dataset developed to enable objective assessme
         </div>
 
         <p class="muted small">
-          Conference poster reporting pilot data on bimanual dexterity as a task-independent, objective metric for robotic surgical expertise.
+          Conference poster reporting pilot data on bimanual dexterity as a task-independent,
+          objective metric for robotic surgical expertise.
         </p>
 
         <details>
@@ -478,13 +580,13 @@ This poster presents a multimodal dataset developed to enable objective assessme
 The increasing use of surgical robotic systems has driven higher training demand, highlighting the need for objective metrics to standardise training, improve learning curves, and optimise patient outcomes. As a pilot exploration, bimanual dexterity may offer a robust, task-independent, objective metric that distinguishes expertise.
 
 <b>Objectives</b>
-To analyse the correlation between left- and right-hand workspace volumes in novice and intermediate robotic surgeons to determine whether this relationship reflects bimanual dexterity and can be utilised as an objective performance measure of expertise. 
+To analyse the correlation between left- and right-hand workspace volumes in novice and intermediate robotic surgeons to determine whether this relationship reflects bimanual dexterity and can be utilised as an objective performance measure of expertise.
 
 <b>Methods</b>
-This pilot study collected data from 21 participants, with 4 excluded due to incomplete datasets. Depth cameras captured kinematic data from 11 novices and 6 intermediates. Spearman’s correlation assessed workspace volume relationships, with 95% confidence intervals derived via bootstrapping. 
+This pilot study collected data from 21 participants, with 4 excluded due to incomplete datasets. Depth cameras captured kinematic data from 11 novices and 6 intermediates. Spearman’s correlation assessed workspace volume relationships, with 95% confidence intervals derived via bootstrapping.
 
 <b>Results</b>
-Novices demonstrated a moderate negative correlation (Spearman’s ρ=-0.4636, p=0.1509, 95% CI: -0.9720-0.3116) whereas intermediates showed a weak positive correlation (ρ=0.2571, p=0.6228, 95% CI: -1.0000-1.0000). Despite no statistical significance, intermediates exhibited more synchronised workspace utilisation, potentially indicating greater bimanual dexterity. 
+Novices demonstrated a moderate negative correlation (Spearman’s ρ=-0.4636, p=0.1509, 95% CI: -0.9720-0.3116) whereas intermediates showed a weak positive correlation (ρ=0.2571, p=0.6228, 95% CI: -1.0000-1.0000). Despite no statistical significance, intermediates exhibited more synchronised workspace utilisation, potentially indicating greater bimanual dexterity.
 
 <b>Patient Benefit</b>
 Objective metrics of expertise could enhance training, improve patient outcomes by ensuring proficiency before independent practice, and enable standardisation of robotic surgical training.
@@ -514,7 +616,8 @@ As a pilot study with a small sample size, this provides preliminary insight int
         </div>
 
         <p class="muted small">
-          Conference paper examining asymmetries in left- and right-hand workspace utilisation during robotic skills training, with implications for bimanual coordination, targeted practice design, and objective performance assessment.
+          Conference paper examining asymmetries in left- and right-hand workspace utilisation during robotic skills training,
+          with implications for bimanual coordination, targeted practice design, and objective performance assessment.
         </p>
 
         <details>
@@ -533,11 +636,12 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
   </section>
 
   <section class="card section" id="copyright">
-    <h2>Copyright note</h2>
+    <h2>Copyright Note</h2>
+
     <p class="muted small">
-      Where publisher copyright applies, I do not reproduce the formatted article PDF. I link to the publisher page (via DOI)
-      and provide summaries in my own words. Where open access or permitted versions are available (e.g., pre-print/accepted
-      manuscript), these may be hosted or linked in line with journal policy.
+      Where publisher copyright applies, I do not reproduce the formatted article PDF. I link to the publisher page
+      via DOI and provide summaries in my own words. Where open access or permitted versions are available
+      (for example, a preprint or accepted manuscript), these may be hosted or linked in line with journal policy.
     </p>
   </section>
 </main>
@@ -561,6 +665,7 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
   document.getElementById("y").textContent = new Date().getFullYear();
 </script>
 
+<!-- Structured data: Person -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -569,7 +674,7 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
   "name": "Callum Pearse",
   "url": "https://callumpearse.co.uk/",
   "image": "https://callumpearse.co.uk/assets/headshot.jpg",
-  "jobTitle": "Medical Student",
+  "jobTitle": "Final-Year Medical Student",
   "affiliation": {
     "@type": "Organization",
     "name": "King’s College London"
@@ -591,6 +696,7 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
 }
 </script>
 
+<!-- Structured data: BMJ Paediatrics Open article -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -615,6 +721,7 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
 }
 </script>
 
+<!-- Structured data: Journal of Robotic Surgery article -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -642,6 +749,7 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
 }
 </script>
 
+<!-- Structured data: Hands On conference paper -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -656,23 +764,48 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
     "https://www.researchgate.net/publication/391612289_Hands_On_A_Comparative_Analysis_of_Left-_and_Right-Hand_Workspaces_in_Surgical_Robotic_Skills_Training"
   ],
   "author": [
-    { "@type": "Person", "name": "Charvi Dave" },
-    { "@type": "Person", "name": "Wai Miu Emma Liu" },
+    {
+      "@type": "Person",
+      "name": "Charvi Dave"
+    },
+    {
+      "@type": "Person",
+      "name": "Wai Miu Emma Liu"
+    },
     {
       "@type": "Person",
       "@id": "https://callumpearse.co.uk/#callum-pearse",
       "name": "Callum Pearse"
     },
-    { "@type": "Person", "name": "Julien Quarez" },
-    { "@type": "Person", "name": "Yang Li" },
-    { "@type": "Person", "name": "Ben Challacombe" },
-    { "@type": "Person", "name": "Prokar Dasgupta" },
-    { "@type": "Person", "name": "Nicholas Raison" },
-    { "@type": "Person", "name": "Alejandro Granados Martinez" }
+    {
+      "@type": "Person",
+      "name": "Julien Quarez"
+    },
+    {
+      "@type": "Person",
+      "name": "Yang Li"
+    },
+    {
+      "@type": "Person",
+      "name": "Ben Challacombe"
+    },
+    {
+      "@type": "Person",
+      "name": "Prokar Dasgupta"
+    },
+    {
+      "@type": "Person",
+      "name": "Nicholas Raison"
+    },
+    {
+      "@type": "Person",
+      "name": "Alejandro Granados Martinez"
+    }
   ]
 }
 </script>
 
+<!-- Structured data: Bimanual Dexterity poster -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -691,14 +824,27 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
       "@id": "https://callumpearse.co.uk/#callum-pearse",
       "name": "Callum Pearse"
     },
-    { "@type": "Person", "name": "Wai Miu Emma Liu" },
-    { "@type": "Person", "name": "Charvi Dave" },
-    { "@type": "Person", "name": "Alejandro Granados" },
-    { "@type": "Person", "name": "Nicholas Raison" }
+    {
+      "@type": "Person",
+      "name": "Wai Miu Emma Liu"
+    },
+    {
+      "@type": "Person",
+      "name": "Charvi Dave"
+    },
+    {
+      "@type": "Person",
+      "name": "Alejandro Granados"
+    },
+    {
+      "@type": "Person",
+      "name": "Nicholas Raison"
+    }
   ]
 }
 </script>
 
+<!-- Structured data: Multimodal dataset poster -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -712,37 +858,127 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
     "https://www.researchgate.net/publication/398995037_Acquisition_and_analysis_of_a_multimodal_dataset_for_skill_evaluation_across_two_robotic_surgical_systems"
   ],
   "author": [
-    { "@type": "Person", "name": "Wai Miu Emma Liu" },
-    { "@type": "Person", "name": "Charvi Dave" },
+    {
+      "@type": "Person",
+      "name": "Wai Miu Emma Liu"
+    },
+    {
+      "@type": "Person",
+      "name": "Charvi Dave"
+    },
     {
       "@type": "Person",
       "@id": "https://callumpearse.co.uk/#callum-pearse",
       "name": "Callum Pearse"
     },
-    { "@type": "Person", "name": "Yang Li" },
-    { "@type": "Person", "name": "Julien Quarez" },
-    { "@type": "Person", "name": "Alejandro Granados Martinez" },
-    { "@type": "Person", "name": "Ben Challacombe" },
-    { "@type": "Person", "name": "Prokar Dasgupta" },
-    { "@type": "Person", "name": "Nicholas Raison" }
+    {
+      "@type": "Person",
+      "name": "Yang Li"
+    },
+    {
+      "@type": "Person",
+      "name": "Julien Quarez"
+    },
+    {
+      "@type": "Person",
+      "name": "Alejandro Granados Martinez"
+    },
+    {
+      "@type": "Person",
+      "name": "Ben Challacombe"
+    },
+    {
+      "@type": "Person",
+      "name": "Prokar Dasgupta"
+    },
+    {
+      "@type": "Person",
+      "name": "Nicholas Raison"
+    }
   ]
 }
 </script>
 
+<!-- Structured data: published ASiT abstract -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": "https://doi.org/10.1093/bjs/znag063.019",
+  "name": "Precision in Motion: Objective Hand-Tracking Kinematic Metrics Correlate With Reviewer-Assessed Robotic Surgical Skill – A Pilot Longitudinal Study",
+  "headline": "Precision in Motion: Objective Hand-Tracking Kinematic Metrics Correlate With Reviewer-Assessed Robotic Surgical Skill – A Pilot Longitudinal Study",
+  "url": "https://doi.org/10.1093/bjs/znag063.019",
+  "identifier": "https://doi.org/10.1093/bjs/znag063.019",
+  "datePublished": "2026",
+  "author": [
+    {
+      "@type": "Person",
+      "@id": "https://callumpearse.co.uk/#callum-pearse",
+      "name": "Callum Pearse"
+    },
+    {
+      "@type": "Person",
+      "name": "Charvi Dave"
+    },
+    {
+      "@type": "Person",
+      "name": "Wai Miu Emma Liu"
+    },
+    {
+      "@type": "Person",
+      "name": "Iman Khan"
+    },
+    {
+      "@type": "Person",
+      "name": "R Khanna"
+    },
+    {
+      "@type": "Person",
+      "name": "Julien Quarez"
+    },
+    {
+      "@type": "Person",
+      "name": "Yang Li"
+    },
+    {
+      "@type": "Person",
+      "name": "Ben Challacombe"
+    },
+    {
+      "@type": "Person",
+      "name": "Prokar Dasgupta"
+    },
+    {
+      "@type": "Person",
+      "name": "Alejandro Granados"
+    },
+    {
+      "@type": "Person",
+      "name": "Nicholas Raison"
+    }
+  ],
+  "isPartOf": {
+    "@type": "Periodical",
+    "name": "BJS"
+  }
+}
+</script>
+
+<!-- Structured data: ASiT Annual Conference -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Event",
-  "@id": "https://callumpearse.co.uk/publications.html#asit-2026-precision-in-motion",
-  "name": "Precision in Motion: Objective Hand-Tracking Kinematic Metrics Correlate With Reviewer-Assessed Robotic Surgical Skill – A Pilot Longitudinal Study",
-  "description": "Oral presentation at the ASiT Annual Conference 2026 in Manchester, presenting a pilot longitudinal study demonstrating correlations between objective hand-tracking kinematic metrics and reviewer-assessed robotic surgical skill. Abstract to be published in the British Journal of Surgery.",
+  "@id": "https://callumpearse.co.uk/publications.html#asit-annual-conference-2026",
+  "name": "ASiT Annual Conference 2026",
+  "description": "Annual conference of the Association of Surgeons in Training, at which Callum Pearse delivered the first-author oral presentation Precision in Motion.",
   "startDate": "2026-03-06",
   "endDate": "2026-03-08",
   "eventStatus": "https://schema.org/EventCompleted",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
     "@type": "Place",
-    "name": "ASiT Annual Conference 2026",
+    "name": "Manchester",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Manchester",
@@ -761,40 +997,14 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
     "name": "Association of Surgeons in Training",
     "url": "https://www.asit.org/"
   },
-  "url": "https://callumpearse.co.uk/publications.html"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  "@id": "https://callumpearse.co.uk/publications.html#asit-precision-in-motion-2026",
-  "name": "Precision in Motion: Objective Hand-Tracking Kinematic Metrics Correlate With Reviewer-Assessed Robotic Surgical Skill – A Pilot Longitudinal Study",
-  "description": "Oral presentation at the ASiT Annual Conference 2026. First author: Callum Pearse et al. Abstract to be published in the British Journal of Surgery.",
-  "author": [
-    {
-      "@type": "Person",
-      "@id": "https://callumpearse.co.uk/#callum-pearse",
-      "name": "Callum Pearse"
-    }
-  ],
-  "isPartOf": {
-    "@id": "https://callumpearse.co.uk/publications.html#asit-2026-precision-in-motion"
+  "workFeatured": {
+    "@id": "https://doi.org/10.1093/bjs/znag063.019"
   },
-  "dateCreated": "2026-03",
-  "keywords": [
-    "surgical education",
-    "robotics",
-    "robotic surgical training",
-    "objective assessment",
-    "kinematic metrics",
-    "hand-tracking"
-  ],
-  "url": "https://callumpearse.co.uk/publications.html"
+  "url": "https://callumpearse.co.uk/publications.html#asit-precision-in-motion-2026"
 }
 </script>
 
+<!-- Structured data: Future of Surgery Festival -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -803,10 +1013,10 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
       "@type": "Event",
       "@id": "https://callumpearse.co.uk/publications.html#rcs-fosf-2026",
       "name": "Future of Surgery Festival",
-      "description": "Conference event hosted by the Royal College of Surgeons of England (UK).",
+      "description": "Conference hosted by the Royal College of Surgeons of England, at which Callum Pearse delivered the oral presentation Learning from Motion.",
       "startDate": "2026-04-20",
       "endDate": "2026-04-21",
-      "eventStatus": "https://schema.org/EventScheduled",
+      "eventStatus": "https://schema.org/EventCompleted",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "location": {
         "@type": "Place",
@@ -823,16 +1033,21 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
         "name": "Royal College of Surgeons of England",
         "url": "https://www.rcseng.ac.uk/"
       },
-      "url": "https://callumpearse.co.uk/publications.html"
+      "workFeatured": {
+        "@id": "https://callumpearse.co.uk/publications.html#learning-from-motion-2026"
+      },
+      "url": "https://callumpearse.co.uk/publications.html#rcs-learning-from-motion-2026"
     },
     {
       "@type": "CreativeWork",
-      "@id": "https://callumpearse.co.uk/publications.html#learning-from-motion-oral-2026",
+      "@id": "https://callumpearse.co.uk/publications.html#learning-from-motion-2026",
       "name": "Learning from Motion: A Multi-modal, System-Agnostic Pipeline for Objective Robotic Surgical Training Assessment",
-      "alternateName": "Oral presentation (presenting author)",
-      "description": "Oral presentation (presenting author: Callum Pearse). First author: Wai Miu Emma Liu et al. Multi-modal, system-agnostic pipeline for objective robotic surgical training assessment using motion-derived kinematic metrics and complementary data streams.",
+      "description": "Multi-modal, system-agnostic pipeline for objective robotic surgical training assessment using motion-derived metrics and complementary data streams.",
       "author": [
-        { "@type": "Person", "name": "Wai Miu Emma Liu" }
+        {
+          "@type": "Person",
+          "name": "Wai Miu Emma Liu"
+        }
       ],
       "contributor": [
         {
@@ -842,25 +1057,99 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
           "url": "https://callumpearse.co.uk/"
         }
       ],
-      "performer": {
-        "@type": "Person",
-        "@id": "https://callumpearse.co.uk/#callum-pearse",
-        "name": "Callum Pearse",
-        "url": "https://callumpearse.co.uk/"
+      "creditText": "Oral presentation delivered by Callum Pearse",
+      "url": "https://callumpearse.co.uk/publications.html#rcs-learning-from-motion-2026"
+    }
+  ]
+}
+</script>
+
+<!-- Structured data: ERUS26 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Event",
+      "@id": "https://callumpearse.co.uk/publications.html#erus26",
+      "name": "ERUS26: 23rd Annual Meeting of the EAU Robotic Urology Section",
+      "description": "The 23rd Annual Meeting of the EAU Robotic Urology Section in Padua, Italy.",
+      "startDate": "2026-09-09",
+      "endDate": "2026-09-11",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Padova Congress Center",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via N. Tommaseo 59",
+          "postalCode": "35131",
+          "addressLocality": "Padua",
+          "addressCountry": "IT"
+        }
       },
-      "isPartOf": {
-        "@id": "https://callumpearse.co.uk/publications.html#rcs-fosf-2026"
+      "image": "https://callumpearse.co.uk/assets/logo.png",
+      "organizer": {
+        "@type": "Organization",
+        "name": "EAU Robotic Urology Section",
+        "url": "https://erus.uroweb.org/"
       },
-      "dateCreated": "2026-04",
-      "keywords": [
-        "surgical education",
-        "robotics",
-        "robotic surgical training",
-        "objective assessment",
-        "kinematic metrics",
-        "multimodal"
+      "workFeatured": {
+        "@id": "https://callumpearse.co.uk/publications.html#erus26-hugo-da-vinci"
+      },
+      "url": "https://erus.uroweb.org/"
+    },
+    {
+      "@type": "Poster",
+      "@id": "https://callumpearse.co.uk/publications.html#erus26-hugo-da-vinci",
+      "name": "Robotic surgical skills acquisition and early learning curve progression between the Hugo RAS and Da Vinci X platforms amongst novice trainees",
+      "description": "Forthcoming poster presentation comparing early robotic surgical skill acquisition and learning-curve progression between the Hugo RAS and Da Vinci X platforms amongst novice trainees.",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Wai Miu Emma Liu"
+        },
+        {
+          "@type": "Person",
+          "name": "Charvi Dave"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://callumpearse.co.uk/#callum-pearse",
+          "name": "Callum Pearse"
+        },
+        {
+          "@type": "Person",
+          "name": "Iman Khan"
+        },
+        {
+          "@type": "Person",
+          "name": "Yang Li"
+        },
+        {
+          "@type": "Person",
+          "name": "Julien Quarez"
+        },
+        {
+          "@type": "Person",
+          "name": "Alejandro Granados"
+        },
+        {
+          "@type": "Person",
+          "name": "Ben Challacombe"
+        },
+        {
+          "@type": "Person",
+          "name": "Prokar Dasgupta"
+        },
+        {
+          "@type": "Person",
+          "name": "Nicholas Raison"
+        }
       ],
-      "url": "https://callumpearse.co.uk/publications.html"
+      "creditText": "Poster to be presented by Callum Pearse",
+      "url": "https://callumpearse.co.uk/publications.html#erus26-hugo-da-vinci"
     }
   ]
 }
