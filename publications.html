@@ -4,37 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="author" content="Callum Pearse">
-
-  <title>Publications | Callum Pearse</title>
+  <title>Publications &amp; Research Outputs | Callum Pearse</title>
 
   <meta
     name="description"
-    content="Publications and research outputs by Callum Pearse, a final-year medical student at King’s College London: journal articles, published conference abstracts, oral presentations, posters, and conference papers."
+    content="Publications and research outputs by Callum Pearse, a final-year medical student at King’s College London undertaking research in robotic surgery, surgical education, simulation-based training, objective performance assessment, and surgeon wellbeing."
   />
 
+  <meta name="author" content="Callum Pearse">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Canonical -->
   <link rel="canonical" href="https://callumpearse.co.uk/publications.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Publications &amp; Research Outputs | Callum Pearse">
-  <meta property="og:description" content="Journal articles, published conference abstracts, oral presentations, posters, and research outputs by Callum Pearse.">
+  <meta property="og:description" content="Peer-reviewed journal articles, published conference abstracts, oral presentations, poster presentations, and conference papers by Callum Pearse.">
   <meta property="og:url" content="https://callumpearse.co.uk/publications.html">
-  <meta property="og:image" content="https://callumpearse.co.uk/assets/logo.png">
+  <meta property="og:image" content="https://callumpearse.co.uk/assets/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Publications and research outputs by Callum Pearse">
   <meta property="og:site_name" content="Callum Pearse">
   <meta property="og:locale" content="en_GB">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Publications &amp; Research Outputs | Callum Pearse">
-  <meta name="twitter:description" content="Journal articles, published conference abstracts, oral presentations, posters, and research outputs by Callum Pearse.">
-  <meta name="twitter:image" content="https://callumpearse.co.uk/assets/logo.png">
+  <meta name="twitter:description" content="Peer-reviewed journal articles, published conference abstracts, oral presentations, poster presentations, and conference papers by Callum Pearse.">
+  <meta name="twitter:image" content="https://callumpearse.co.uk/assets/og-card.png">
+  <meta name="twitter:image:alt" content="Publications and research outputs by Callum Pearse">
 
-  <!-- Favicon -->
+  <!-- Icons -->
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
   <link rel="apple-touch-icon" href="/assets/favicon-32.png">
+  <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#0b1220">
 
   <style>
     :root{
@@ -49,6 +57,10 @@
     }
 
     *{box-sizing:border-box}
+
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       margin:0;
@@ -66,7 +78,16 @@
       text-decoration:none;
     }
 
-    a:hover{text-decoration:underline}
+    a:hover{
+      text-decoration:underline;
+    }
+
+    a:focus-visible,
+    summary:focus-visible{
+      outline:2px solid var(--link);
+      outline-offset:4px;
+      border-radius:4px;
+    }
 
     .wrap{
       max-width:var(--max);
@@ -74,7 +95,9 @@
       padding:32px 18px 60px;
     }
 
-    header{padding:28px 0 18px}
+    header{
+      padding:28px 0 18px;
+    }
 
     .nav{
       display:flex;
@@ -99,7 +122,9 @@
       font-size:13px;
     }
 
-    .nav a{color:var(--muted)}
+    .nav a{
+      color:var(--muted);
+    }
 
     .nav a:hover{
       color:var(--text);
@@ -125,7 +150,9 @@
         max-width:100%;
       }
 
-      .nav-right{gap:12px}
+      .nav-right{
+        gap:12px;
+      }
     }
 
     .card{
@@ -149,10 +176,17 @@
       letter-spacing:0.2px;
     }
 
-    p{margin:0 0 12px}
+    p{
+      margin:0 0 12px;
+    }
 
-    .muted{color:var(--muted)}
-    .small{font-size:14px}
+    .muted{
+      color:var(--muted);
+    }
+
+    .small{
+      font-size:14px;
+    }
 
     .btnrow{
       display:flex;
@@ -221,7 +255,9 @@
       font-size:14px;
     }
 
-    summary::-webkit-details-marker{display:none}
+    summary::-webkit-details-marker{
+      display:none;
+    }
 
     .abstract{
       margin-top:10px;
@@ -248,6 +284,14 @@
       font-size:13px;
     }
 
+    .footer-meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
     .footerlinks{
       display:flex;
       flex-wrap:wrap;
@@ -256,11 +300,19 @@
       font-size:13px;
     }
 
-    .footerlinks a{color:var(--muted)}
+    .footerlinks a{
+      color:var(--muted);
+    }
 
     .footerlinks a:hover{
       color:var(--text);
       text-decoration:none;
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      html{
+        scroll-behavior:auto;
+      }
     }
   </style>
 
@@ -287,6 +339,8 @@
     "@id":"https://callumpearse.co.uk/publications.html#publications",
     "name":"Publications & Research Outputs | Callum Pearse",
     "url":"https://callumpearse.co.uk/publications.html",
+    "description":"Peer-reviewed journal articles, published conference abstracts, oral presentations, poster presentations and conference papers by Callum Pearse.",
+    "dateModified":"2026-08-01",
     "isPartOf":{
       "@id":"https://callumpearse.co.uk/#website"
     },
@@ -303,13 +357,16 @@
     "@type":"Person",
     "@id":"https://callumpearse.co.uk/#callum-pearse",
     "name":"Callum Pearse",
+    "givenName":"Callum",
+    "familyName":"Pearse",
     "url":"https://callumpearse.co.uk/",
     "image":"https://callumpearse.co.uk/assets/headshot.jpg",
     "email":"mailto:contact@callumpearse.co.uk",
     "jobTitle":"Final-Year Medical Student",
     "affiliation":{
-      "@type":"Organization",
-      "name":"King’s College London"
+      "@type":"CollegeOrUniversity",
+      "name":"King’s College London",
+      "url":"https://www.kcl.ac.uk/"
     },
     "award":[
       "Worshipful Company of Barbers’ Prize for Academic Excellence, 2021–22",
@@ -320,11 +377,14 @@
       "Robotic surgery",
       "Robotic surgical training",
       "Simulation-based training",
-      "Surgical skill acquisition",
+      "Technical skill acquisition",
       "Objective performance assessment",
+      "Motion-derived performance analytics",
       "Machine learning in surgical assessment",
       "Surgeon wellbeing",
-      "Workforce sustainability"
+      "Workforce sustainability",
+      "Systematic reviews",
+      "Meta-analysis"
     ],
     "sameAs":[
       "https://www.linkedin.com/in/callum-pearse-/",
@@ -341,20 +401,20 @@
 <div class="wrap">
 
 <header>
-  <nav class="nav">
+  <nav class="nav" aria-label="Primary navigation">
     <div class="nav-left">
-      <a href="/" aria-label="Home">
-        <img src="assets/logo.png" alt="Callum Pearse">
+      <a href="/" aria-label="Callum Pearse homepage">
+        <img src="/assets/logo.png" alt="Callum Pearse">
       </a>
     </div>
 
     <div class="nav-right">
-  <a href="/#about">About</a>
-  <a href="/#research">Research</a>
-  <a href="/#awards">Awards</a>
-  <a href="/#outputs">Outputs</a>
-  <a href="/publications.html">Publications</a>
-  <a href="/#contact">Contact</a>
+      <a href="/#about">About</a>
+      <a href="/#research">Research</a>
+      <a href="/#awards">Awards</a>
+      <a href="/#outputs">Outputs</a>
+      <a href="/publications.html">Publications</a>
+      <a href="/#contact">Contact</a>
     </div>
   </nav>
 
@@ -363,15 +423,35 @@
 
     <p class="muted">
       Peer-reviewed journal articles, published conference abstracts, oral presentations,
-      poster presentations, and conference papers. Abstracts are shown where permissible;
-      where not, I provide a summary and link to the DOI, publisher, official conference page,
+      poster presentations and conference papers. Abstracts are shown where permissible;
+      where not, I provide a summary and link to the DOI, publisher, official conference page
       or ResearchGate record.
     </p>
 
     <div class="btnrow">
-      <a class="btn" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en">Google Scholar</a>
-      <a class="btn" href="https://www.researchgate.net/profile/Callum-Pearse-3">ResearchGate</a>
-      <a class="btn" href="https://orcid.org/0009-0000-7396-7595">ORCID</a>
+      <a
+        class="btn"
+        rel="me"
+        href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&amp;hl=en"
+      >
+        Google Scholar
+      </a>
+
+      <a
+        class="btn"
+        rel="me"
+        href="https://www.researchgate.net/profile/Callum-Pearse-3"
+      >
+        ResearchGate
+      </a>
+
+      <a
+        class="btn"
+        rel="me"
+        href="https://orcid.org/0009-0000-7396-7595"
+      >
+        ORCID
+      </a>
     </div>
 
     <div class="note">
@@ -565,7 +645,7 @@ This study investigates whether objective hand-tracking kinematic metrics can se
 
         <p class="muted small">
           Published conference abstract describing a multimodal dataset across two robotic surgical systems
-          to support objective skill evaluation, simulation-based training assessment, and performance analytics.
+          to support objective skill evaluation, simulation-based training assessment and performance analytics.
         </p>
 
         <details>
@@ -809,7 +889,7 @@ As a pilot study with a small sample size, this provides preliminary insight int
 
         <p class="muted small">
           Conference paper examining asymmetries in left- and right-hand workspace utilisation during robotic
-          skills training, with implications for bimanual coordination, targeted practice design,
+          skills training, with implications for bimanual coordination, targeted practice design
           and objective performance assessment.
         </p>
 
@@ -846,7 +926,10 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
 </main>
 
 <footer>
-  © <span id="y"></span> Callum Pearse · callumpearse.co.uk
+  <div class="footer-meta">
+    <span>© <span id="y"></span> Callum Pearse · callumpearse.co.uk</span>
+    <span>Last updated: August 2026</span>
+  </div>
 
   <div class="footerlinks">
     <a href="/">Home</a>
@@ -856,10 +939,10 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
     <a href="/#outputs">Outputs</a>
     <a href="/publications.html">Publications</a>
     <a href="mailto:contact@callumpearse.co.uk">Contact</a>
-    <a href="https://www.linkedin.com/in/callum-pearse-/">LinkedIn</a>
-    <a href="https://orcid.org/0009-0000-7396-7595">ORCID</a>
-    <a href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&hl=en">Google Scholar</a>
-    <a href="https://www.researchgate.net/profile/Callum-Pearse-3">ResearchGate</a>
+    <a rel="me" href="https://www.linkedin.com/in/callum-pearse-/">LinkedIn</a>
+    <a rel="me" href="https://orcid.org/0009-0000-7396-7595">ORCID</a>
+    <a rel="me" href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&amp;hl=en">Google Scholar</a>
+    <a rel="me" href="https://www.researchgate.net/profile/Callum-Pearse-3">ResearchGate</a>
   </div>
 </footer>
 
@@ -919,7 +1002,7 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
 }
 </script>
 
-<!-- Structured data: ASiT abstract -->
+<!-- Structured data: published ASiT abstract -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
