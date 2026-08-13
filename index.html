@@ -6,6 +6,11 @@
 
   <title>Callum Pearse | Final-Year Medical Student | King’s College London | Robotic Surgery Research</title>
 
+  <!-- Edit this whenever page content is updated -->
+  <script>
+    const lastUpdated = "August 2026";
+  </script>
+
   <meta
     name="description"
     content="Callum Pearse is a final-year medical student at King’s College London undertaking research in robotic surgery, surgical education, simulation-based training, objective performance assessment, and surgeon wellbeing."
@@ -665,7 +670,7 @@
   <nav class="nav" aria-label="Primary navigation">
     <div class="nav-left">
       <a href="/" aria-label="Callum Pearse homepage">
-        <img src="/assets/logo.png" alt="Callum Pearse">
+        <img src="/assets/logo.png" alt="">
       </a>
     </div>
 
@@ -684,7 +689,7 @@
       <div class="profile">
         <img
           src="/assets/headshot.jpg"
-          alt="Callum Pearse"
+          alt="Headshot of Callum Pearse"
           width="110"
           height="110"
           fetchpriority="high"
@@ -755,6 +760,37 @@
         <li>Poster presentation as presenting author at ERUS26 in Padua, September 2026</li>
         <li>Two-time recipient of the Worshipful Company of Barbers’ Prize for Academic Excellence</li>
       </ul>
+
+      <p class="small muted" style="margin-top:12px;">
+        Citation metrics updated August 2026. Figures may differ slightly from the live Google Scholar profile.
+      </p>
+
+      <div class="scholar-metrics" aria-label="Google Scholar citation metrics">
+        <div class="scholar-metric">
+          <strong>5</strong>
+          <span>Citations</span>
+        </div>
+
+        <div class="scholar-metric">
+          <strong>1</strong>
+          <span>h-index</span>
+        </div>
+
+        <div class="scholar-metric">
+          <strong>0</strong>
+          <span>i10-index</span>
+        </div>
+      </div>
+
+      <div class="btnrow">
+        <a
+          class="btn"
+          rel="me"
+          href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&amp;hl=en"
+        >
+          View Google Scholar
+        </a>
+      </div>
     </aside>
   </div>
 </header>
@@ -770,10 +806,10 @@
     </p>
 
     <p class="muted">
-      I hope to pursue a career in academic surgery, combining clinical practice with research that improves
-      the quality, objectivity and accessibility of surgical training. I am especially interested in translating
-      robust methodology and emerging technology into meaningful improvements in education, workforce sustainability
-      and patient care.
+      I hope to pursue a career in academic surgery, with a particular interest in urology and robotic surgical
+      subspecialties, combining clinical practice with research that improves the quality, objectivity and
+      accessibility of surgical training. I am especially interested in translating robust methodology and
+      emerging technology into meaningful improvements in education, workforce sustainability and patient care.
     </p>
   </section>
 
@@ -791,6 +827,27 @@
     </ul>
   </section>
 
+  <section id="clinical-experience" class="card">
+    <h2>Clinical Experience</h2>
+    <p class="muted">Clinical placements across 13 specialties during undergraduate training at King's College London.</p>
+
+    <ul>
+      <li>Emergency Medicine and Critical Care - King's College Hospital</li>
+      <li>Obstetrics and Gynaecology - King's College Hospital</li>
+      <li>Paediatrics - Evelina London, Guy's and St Thomas' Hospital</li>
+      <li>Psychiatry (including Perinatal and Forensic) - South London and Maudsley NHS Foundation Trust</li>
+      <li>Trauma and Orthopaedic Surgery - King's College Hospital</li>
+      <li>Cardiac Surgery - King's College Hospital</li>
+      <li>General Surgery - King's College Hospital</li>
+      <li>Cardiology - King's College Hospital & Medway Maritime Hospital</li>
+      <li>Respiratory - King's College Hospital & Medway Maritime Hospital</li>
+      <li>Haematology - Medway Maritime Hospital</li>
+      <li>Neurology - King's College Hospital & Medway Maritime Hospital</li>
+      <li>Stroke Medicine - King's College Hospital</li>
+      <li>Endocrinology - King's College Hospital & Medway Maritime Hospital</li>
+    </ul>
+  </section>
+
   <section id="awards" class="card">
     <h2>Awards &amp; Honours</h2>
 
@@ -804,41 +861,6 @@
         <strong>Worshipful Company of Barbers’ Prize for Academic Excellence</strong>
         <div class="meta">King’s College London · 2021–22</div>
       </div>
-    </div>
-  </section>
-
-  <section class="card" aria-labelledby="scholar-heading">
-    <h2 id="scholar-heading">Google Scholar</h2>
-
-    <p class="small muted">
-      Citation metrics updated August 2026. Figures may differ slightly from the live Google Scholar profile.
-    </p>
-
-    <div class="scholar-metrics" aria-label="Google Scholar citation metrics">
-      <div class="scholar-metric">
-        <strong>5</strong>
-        <span>Citations</span>
-      </div>
-
-      <div class="scholar-metric">
-        <strong>1</strong>
-        <span>h-index</span>
-      </div>
-
-      <div class="scholar-metric">
-        <strong>0</strong>
-        <span>i10-index</span>
-      </div>
-    </div>
-
-    <div class="btnrow">
-      <a
-        class="btn"
-        rel="me"
-        href="https://scholar.google.com/citations?user=3UxZCKIAAAAJ&amp;hl=en"
-      >
-        View Google Scholar
-      </a>
     </div>
   </section>
 
@@ -1067,7 +1089,7 @@
 <footer>
   <div class="footer-meta">
     <span>© <span id="y"></span> Callum Pearse · callumpearse.co.uk</span>
-    <span>Last updated: August 2026</span>
+    <span>Last updated: <span id="updated"></span></span>
   </div>
 
   <div class="footerlinks">
@@ -1088,6 +1110,7 @@
 
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
+  document.getElementById("updated").textContent = lastUpdated;
 </script>
 
 </body>
