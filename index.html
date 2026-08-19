@@ -284,6 +284,22 @@
       justify-content:center;
     }
 
+    /* Scroll-triggered fade-in: only applies when JS confirms IntersectionObserver
+       support (html.js-reveal) and the user has no reduced-motion preference. */
+    @media (prefers-reduced-motion: no-preference){
+      html.js-reveal .card{
+        opacity:0;
+        transform:translateY(14px);
+        transition:opacity 350ms ease-out, transform 350ms ease-out;
+        transition-delay:var(--reveal-delay,0ms);
+      }
+
+      html.js-reveal .card.is-visible{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
     h1{
       margin:0 0 8px;
       font-size:40px;
@@ -1288,6 +1304,39 @@
       if (getStored()) return;
       reflectState(effectiveTheme());
     });
+  })();
+</script>
+
+<script>
+  (function initScrollReveal() {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    document.documentElement.classList.add("js-reveal");
+
+    const STAGGER_STEP_MS = 70;
+    const cards = Array.from(document.querySelectorAll(".card"));
+
+    const siblingIndex = new Map();
+    cards.forEach((card) => {
+      const parent = card.parentElement;
+      const idx = siblingIndex.get(parent) || 0;
+      siblingIndex.set(parent, idx + 1);
+      card.style.setProperty("--reveal-delay", `${(idx % 2) * STAGGER_STEP_MS}ms`);
+    });
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    cards.forEach((card) => observer.observe(card));
   })();
 </script>
 
