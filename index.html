@@ -867,6 +867,14 @@
   <section id="outputs" class="card" style="grid-column:1 / -1;">
     <h2>Research Outputs</h2>
 
+    <p class="small muted" style="margin:4px 0 14px;">
+      Live from <a href="https://orcid.org/0009-0000-7396-7595" target="_blank" rel="noopener">ORCID</a> ·
+      this list syncs automatically on page load; a recent snapshot is shown if the live feed is unavailable.
+    </p>
+
+    <div id="outputs-live" class="list" hidden></div>
+
+    <div id="outputs-fallback">
     <h3 class="small" style="margin:14px 0 6px;">Journal Articles</h3>
 
     <div class="list">
@@ -1068,6 +1076,8 @@
       </div>
     </div>
 
+    </div>
+
     <div class="btnrow" style="margin-top:16px;">
       <a class="btn" href="/publications.html">Explore Publications &amp; Abstracts</a>
     </div>
@@ -1111,6 +1121,87 @@
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
   document.getElementById("updated").textContent = lastUpdated;
+</script>
+
+<script>
+  (async function loadOrcidWorks() {
+    const ORCID_ID = "0009-0000-7396-7595";
+    const ORCID_WORKS_URL = `https://pub.orcid.org/v3.0/${ORCID_ID}/works`;
+
+    const liveEl = document.getElementById("outputs-live");
+    const fallbackEl = document.getElementById("outputs-fallback");
+    if (!liveEl || !fallbackEl) return;
+
+    const escapeHtml = (str) =>
+      String(str).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      }[c]));
+
+    try {
+      const res = await fetch(ORCID_WORKS_URL, {
+        headers: { Accept: "application/json" },
+      });
+
+      if (!res.ok) {
+        throw new Error(`ORCID request failed: ${res.status}`);
+      }
+
+      const data = await res.json();
+      const groups = Array.isArray(data.group) ? data.group : [];
+
+      const works = groups
+        .map((g) => (Array.isArray(g["work-summary"]) ? g["work-summary"][0] : null))
+        .filter(Boolean)
+        .map((w) => {
+          const title = w.title && w.title.title && w.title.title.value;
+          const year = w["publication-date"] && w["publication-date"].year && w["publication-date"].year.value;
+          const journal = w["journal-title"] && w["journal-title"].value;
+
+          const externalIds = (w["external-ids"] && w["external-ids"]["external-id"]) || [];
+          const doiEntry = externalIds.find((id) => id["external-id-type"] === "doi");
+          const url = doiEntry
+            ? `https://doi.org/${doiEntry["external-id-value"]}`
+            : (w.url && w.url.value) || null;
+
+          return { title, year: year ? parseInt(year, 10) : null, journal, url };
+        })
+        .filter((w) => w.title);
+
+      if (works.length === 0) {
+        throw new Error("No ORCID works returned");
+      }
+
+      works.sort((a, b) => (b.year || 0) - (a.year || 0));
+
+      liveEl.innerHTML = works
+        .map((w) => {
+          const titleHtml = w.url
+            ? `<a href="${escapeHtml(w.url)}" target="_blank" rel="noopener">${escapeHtml(w.title)}</a>`
+            : escapeHtml(w.title);
+
+          const metaParts = [];
+          if (w.journal) metaParts.push(`<em>${escapeHtml(w.journal)}</em>`);
+          metaParts.push(w.year ? String(w.year) : "n.d.");
+
+          return `
+            <div class="item">
+              <strong>${titleHtml}</strong>
+              <div class="meta">${metaParts.join(" · ")}</div>
+            </div>
+          `;
+        })
+        .join("");
+
+      liveEl.hidden = false;
+      fallbackEl.hidden = true;
+    } catch (err) {
+      console.error("Falling back to static publications list:", err);
+    }
+  })();
 </script>
 
 </body>
