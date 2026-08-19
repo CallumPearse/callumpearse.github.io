@@ -11,6 +11,18 @@
     const lastUpdated = "August 2026";
   </script>
 
+  <!-- Applies a saved theme choice before first paint, so there's no flash of the wrong theme -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <meta
     name="description"
     content="Callum Pearse is a final-year medical student at King’s College London undertaking research in robotic surgery, surgical education, simulation-based training, objective performance assessment, and surgeon wellbeing."
@@ -18,7 +30,7 @@
 
   <meta name="author" content="Callum Pearse">
   <meta name="theme-color" content="#0b1220">
-  <meta name="color-scheme" content="dark">
+  <meta name="color-scheme" content="light dark">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://callumpearse.co.uk/" />
@@ -59,8 +71,39 @@
       --link:#9cc2ff;
       --border:rgba(255,255,255,.10);
       --shadow:0 10px 30px rgba(0,0,0,.35);
+      --card-bg:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));
+      --inset-bg:rgba(0,0,0,.12);
+      --avatar-bg:rgba(0,0,0,.2);
       --radius:18px;
       --max:980px;
+    }
+
+    /* Light theme: follows system preference by default, unless overridden below */
+    @media (prefers-color-scheme: light){
+      :root:not([data-theme="dark"]){
+        --bg:#f4f7fc;
+        --text:#0f172a;
+        --muted:#48536b;
+        --link:#1d5fd6;
+        --border:rgba(15,23,42,.14);
+        --shadow:0 10px 30px rgba(15,23,42,.12);
+        --card-bg:linear-gradient(180deg,#ffffff,#f3f6fc);
+        --inset-bg:rgba(15,23,42,.05);
+        --avatar-bg:rgba(15,23,42,.08);
+      }
+    }
+
+    /* Explicit user choice (persisted in localStorage) always wins over system preference */
+    :root[data-theme="light"]{
+      --bg:#f4f7fc;
+      --text:#0f172a;
+      --muted:#48536b;
+      --link:#1d5fd6;
+      --border:rgba(15,23,42,.14);
+      --shadow:0 10px 30px rgba(15,23,42,.12);
+      --card-bg:linear-gradient(180deg,#ffffff,#f3f6fc);
+      --inset-bg:rgba(15,23,42,.05);
+      --avatar-bg:rgba(15,23,42,.08);
     }
 
     *{box-sizing:border-box}
@@ -124,6 +167,7 @@
 
     .nav-right{
       display:flex;
+      align-items:center;
       gap:16px;
       flex-wrap:wrap;
       font-size:13px;
@@ -136,6 +180,57 @@
     .nav a:hover{
       color:var(--text);
       text-decoration:none;
+    }
+
+    .theme-toggle{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:30px;
+      height:30px;
+      padding:0;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:var(--inset-bg);
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    .theme-toggle:hover{
+      color:var(--text);
+    }
+
+    .theme-toggle:focus-visible{
+      outline:2px solid var(--link);
+      outline-offset:2px;
+    }
+
+    .theme-toggle svg{
+      width:16px;
+      height:16px;
+      display:block;
+    }
+
+    .theme-toggle .icon-sun{
+      display:none;
+    }
+
+    :root[data-theme="light"] .theme-toggle .icon-moon{
+      display:none;
+    }
+
+    :root[data-theme="light"] .theme-toggle .icon-sun{
+      display:block;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root:not([data-theme="dark"]) .theme-toggle .icon-moon{
+        display:none;
+      }
+
+      :root:not([data-theme="dark"]) .theme-toggle .icon-sun{
+        display:block;
+      }
     }
 
     @media (max-width:1000px){
@@ -176,7 +271,7 @@
     }
 
     .card{
-      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));
+      background:var(--card-bg);
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
@@ -231,7 +326,7 @@
       border-radius:50%;
       object-fit:cover;
       border:1px solid var(--border);
-      background:rgba(0,0,0,.2);
+      background:var(--avatar-bg);
       flex:0 0 auto;
     }
 
@@ -253,7 +348,7 @@
       padding:13px 10px;
       border:1px solid var(--border);
       border-radius:14px;
-      background:rgba(0,0,0,.12);
+      background:var(--inset-bg);
       text-align:center;
     }
 
@@ -292,7 +387,7 @@
       border:1px solid var(--border);
       border-radius:999px;
       color:var(--muted);
-      background:rgba(0,0,0,.12);
+      background:var(--inset-bg);
     }
 
     .grid{
@@ -328,7 +423,7 @@
       padding:14px;
       border:1px solid var(--border);
       border-radius:14px;
-      background:rgba(0,0,0,.10);
+      background:var(--inset-bg);
     }
 
     .item strong{
@@ -358,7 +453,7 @@
       padding:12px 8px;
       border:1px solid var(--border);
       border-radius:12px;
-      background:rgba(0,0,0,.10);
+      background:var(--inset-bg);
       text-align:center;
     }
 
@@ -687,6 +782,21 @@
       <a href="#outputs">Outputs</a>
       <a href="/publications.html">Publications</a>
       <a href="#contact">Contact</a>
+      <button
+        type="button"
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-label="Switch to light theme"
+        aria-pressed="false"
+      >
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+        </svg>
+      </button>
     </div>
   </nav>
 
@@ -1128,6 +1238,57 @@
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
   document.getElementById("updated").textContent = lastUpdated;
+</script>
+
+<script>
+  (function initThemeToggle() {
+    const STORAGE_KEY = "theme";
+    const btn = document.getElementById("theme-toggle");
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    const mql = window.matchMedia("(prefers-color-scheme: light)");
+
+    const getStored = () => {
+      try {
+        return localStorage.getItem(STORAGE_KEY);
+      } catch (e) {
+        return null;
+      }
+    };
+
+    const effectiveTheme = () => {
+      const stored = getStored();
+      if (stored === "light" || stored === "dark") return stored;
+      return mql.matches ? "light" : "dark";
+    };
+
+    const reflectState = (theme) => {
+      if (btn) {
+        btn.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
+        btn.setAttribute("aria-label", theme === "light" ? "Switch to dark theme" : "Switch to light theme");
+      }
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute("content", theme === "light" ? "#f4f7fc" : "#0b1220");
+      }
+    };
+
+    reflectState(effectiveTheme());
+
+    if (btn) {
+      btn.addEventListener("click", () => {
+        const next = effectiveTheme() === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", next);
+        try {
+          localStorage.setItem(STORAGE_KEY, next);
+        } catch (e) {}
+        reflectState(next);
+      });
+    }
+
+    mql.addEventListener("change", () => {
+      if (getStored()) return;
+      reflectState(effectiveTheme());
+    });
+  })();
 </script>
 
 <script>
