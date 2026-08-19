@@ -6,6 +6,15 @@
 
   <title>Publications &amp; Research Outputs | Callum Pearse</title>
 
+  <!-- Edit this whenever page content is updated -->
+  <script>
+    const lastUpdated = "August 2026";
+  </script>
+
+  <!-- Shared theme: applies a saved theme choice before first paint, wires up the toggle -->
+  <script src="/assets/theme.js"></script>
+  <link rel="stylesheet" href="/assets/theme.css">
+
   <meta
     name="description"
     content="Publications and research outputs by Callum Pearse, a final-year medical student at King’s College London undertaking research in robotic surgery, surgical education, simulation-based training, objective performance assessment, and surgeon wellbeing."
@@ -13,7 +22,7 @@
 
   <meta name="author" content="Callum Pearse">
   <meta name="theme-color" content="#0b1220">
-  <meta name="color-scheme" content="dark">
+  <meta name="color-scheme" content="light dark">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://callumpearse.co.uk/publications.html" />
@@ -46,12 +55,6 @@
 
   <style>
     :root{
-      --bg:#0b1220;
-      --text:#e8eefc;
-      --muted:#b8c4e6;
-      --link:#9cc2ff;
-      --border:rgba(255,255,255,.10);
-      --shadow:0 10px 30px rgba(0,0,0,.35);
       --radius:18px;
       --max:980px;
     }
@@ -117,6 +120,7 @@
 
     .nav-right{
       display:flex;
+      align-items:center;
       gap:16px;
       flex-wrap:wrap;
       font-size:13px;
@@ -156,7 +160,7 @@
     }
 
     .card{
-      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));
+      background:var(--card-bg);
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
@@ -227,7 +231,7 @@
       padding:14px;
       border:1px solid var(--border);
       border-radius:14px;
-      background:rgba(0,0,0,.10);
+      background:var(--inset-bg);
     }
 
     .item h3{
@@ -273,7 +277,7 @@
       border-radius:14px;
       color:var(--muted);
       font-size:13px;
-      background:rgba(0,0,0,.08);
+      background:var(--inset-bg);
     }
 
     footer{
@@ -404,7 +408,7 @@
   <nav class="nav" aria-label="Primary navigation">
     <div class="nav-left">
       <a href="/" aria-label="Callum Pearse homepage">
-        <img src="/assets/logo.png" alt="Callum Pearse">
+        <img src="/assets/logo.png" alt="">
       </a>
     </div>
 
@@ -415,6 +419,21 @@
       <a href="/#outputs">Outputs</a>
       <a href="/publications.html">Publications</a>
       <a href="/#contact">Contact</a>
+      <button
+        type="button"
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-label="Switch to light theme"
+        aria-pressed="false"
+      >
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+        </svg>
+      </button>
     </div>
   </nav>
 
@@ -928,7 +947,7 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
 <footer>
   <div class="footer-meta">
     <span>© <span id="y"></span> Callum Pearse · callumpearse.co.uk</span>
-    <span>Last updated: August 2026</span>
+    <span>Last updated: <span id="updated"></span></span>
   </div>
 
   <div class="footerlinks">
@@ -950,7 +969,10 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
 
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
+  document.getElementById("updated").textContent = lastUpdated;
 </script>
+
+<script src="/assets/reveal.js"></script>
 
 <!-- Structured data: Journal of Robotic Surgery article -->
 <script type="application/ld+json">

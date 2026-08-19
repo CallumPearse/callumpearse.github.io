@@ -11,17 +11,9 @@
     const lastUpdated = "August 2026";
   </script>
 
-  <!-- Applies a saved theme choice before first paint, so there's no flash of the wrong theme -->
-  <script>
-    (function () {
-      try {
-        var stored = localStorage.getItem("theme");
-        if (stored === "light" || stored === "dark") {
-          document.documentElement.setAttribute("data-theme", stored);
-        }
-      } catch (e) {}
-    })();
-  </script>
+  <!-- Shared theme: applies a saved theme choice before first paint, wires up the toggle -->
+  <script src="/assets/theme.js"></script>
+  <link rel="stylesheet" href="/assets/theme.css">
 
   <meta
     name="description"
@@ -65,30 +57,8 @@
 
   <style>
     :root{
-      --bg:#0b1220;
-      --text:#e8eefc;
-      --muted:#b8c4e6;
-      --link:#9cc2ff;
-      --border:rgba(255,255,255,.10);
-      --shadow:0 10px 30px rgba(0,0,0,.35);
-      --card-bg:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));
-      --inset-bg:rgba(0,0,0,.12);
-      --avatar-bg:rgba(0,0,0,.2);
       --radius:18px;
       --max:980px;
-    }
-
-    /* Dark is the default for every new visitor; light only applies once explicitly chosen and stored */
-    :root[data-theme="light"]{
-      --bg:#f4f7fc;
-      --text:#0f172a;
-      --muted:#48536b;
-      --link:#1d5fd6;
-      --border:rgba(15,23,42,.14);
-      --shadow:0 10px 30px rgba(15,23,42,.12);
-      --card-bg:linear-gradient(180deg,#ffffff,#f3f6fc);
-      --inset-bg:rgba(15,23,42,.05);
-      --avatar-bg:rgba(15,23,42,.08);
     }
 
     *{box-sizing:border-box}
@@ -167,47 +137,6 @@
       text-decoration:none;
     }
 
-    .theme-toggle{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:30px;
-      height:30px;
-      padding:0;
-      border:1px solid var(--border);
-      border-radius:999px;
-      background:var(--inset-bg);
-      color:var(--muted);
-      cursor:pointer;
-    }
-
-    .theme-toggle:hover{
-      color:var(--text);
-    }
-
-    .theme-toggle:focus-visible{
-      outline:2px solid var(--link);
-      outline-offset:2px;
-    }
-
-    .theme-toggle svg{
-      width:16px;
-      height:16px;
-      display:block;
-    }
-
-    .theme-toggle .icon-sun{
-      display:none;
-    }
-
-    :root[data-theme="light"] .theme-toggle .icon-moon{
-      display:none;
-    }
-
-    :root[data-theme="light"] .theme-toggle .icon-sun{
-      display:block;
-    }
-
     @media (max-width:1000px){
       .nav-left img{
         height:108px;
@@ -257,22 +186,6 @@
       display:flex;
       flex-direction:column;
       justify-content:center;
-    }
-
-    /* Scroll-triggered fade-in: only applies when JS confirms IntersectionObserver
-       support (html.js-reveal) and the user has no reduced-motion preference. */
-    @media (prefers-reduced-motion: no-preference){
-      html.js-reveal .card{
-        opacity:0;
-        transform:translateY(14px);
-        transition:opacity 350ms ease-out, transform 350ms ease-out;
-        transition-delay:var(--reveal-delay,0ms);
-      }
-
-      html.js-reveal .card.is-visible{
-        opacity:1;
-        transform:translateY(0);
-      }
     }
 
     h1{
@@ -1231,80 +1144,7 @@
   document.getElementById("updated").textContent = lastUpdated;
 </script>
 
-<script>
-  (function initThemeToggle() {
-    const STORAGE_KEY = "theme";
-    const btn = document.getElementById("theme-toggle");
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-
-    const getStored = () => {
-      try {
-        return localStorage.getItem(STORAGE_KEY);
-      } catch (e) {
-        return null;
-      }
-    };
-
-    // Dark is the default for every visitor until they explicitly choose light.
-    const effectiveTheme = () => (getStored() === "light" ? "light" : "dark");
-
-    const reflectState = (theme) => {
-      if (btn) {
-        btn.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
-        btn.setAttribute("aria-label", theme === "light" ? "Switch to dark theme" : "Switch to light theme");
-      }
-      if (metaThemeColor) {
-        metaThemeColor.setAttribute("content", theme === "light" ? "#f4f7fc" : "#0b1220");
-      }
-    };
-
-    reflectState(effectiveTheme());
-
-    if (btn) {
-      btn.addEventListener("click", () => {
-        const next = effectiveTheme() === "light" ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", next);
-        try {
-          localStorage.setItem(STORAGE_KEY, next);
-        } catch (e) {}
-        reflectState(next);
-      });
-    }
-  })();
-</script>
-
-<script>
-  (function initScrollReveal() {
-    if (!("IntersectionObserver" in window)) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    document.documentElement.classList.add("js-reveal");
-
-    const STAGGER_STEP_MS = 70;
-    const cards = Array.from(document.querySelectorAll(".card"));
-
-    const siblingIndex = new Map();
-    cards.forEach((card) => {
-      const parent = card.parentElement;
-      const idx = siblingIndex.get(parent) || 0;
-      siblingIndex.set(parent, idx + 1);
-      card.style.setProperty("--reveal-delay", `${(idx % 2) * STAGGER_STEP_MS}ms`);
-    });
-
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          obs.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-    );
-
-    cards.forEach((card) => observer.observe(card));
-  })();
-</script>
+<script src="/assets/reveal.js"></script>
 
 <script>
   (async function loadOrcidWorks() {
