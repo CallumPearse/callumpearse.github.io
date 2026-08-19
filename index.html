@@ -872,7 +872,7 @@
       this list syncs automatically on page load; a recent snapshot is shown if the live feed is unavailable.
     </p>
 
-    <div id="outputs-live" class="list" hidden></div>
+    <div id="outputs-live" hidden></div>
 
     <div id="outputs-fallback">
     <h3 class="small" style="margin:14px 0 6px;">Journal Articles</h3>
@@ -1153,6 +1153,26 @@
       const data = await res.json();
       const groups = Array.isArray(data.group) ? data.group : [];
 
+      // Maps ORCID's controlled work "type" vocabulary onto the same
+      // category labels used on publications.html.
+      const CATEGORY_ORDER = [
+        "Journal Articles",
+        "Published Conference Abstracts",
+        "Oral Presentations",
+        "Poster Presentations",
+        "Conference Papers",
+        "Other Works",
+      ];
+
+      const TYPE_TO_CATEGORY = {
+        "journal-article": "Journal Articles",
+        "review": "Journal Articles",
+        "conference-abstract": "Published Conference Abstracts",
+        "lecture-speech": "Oral Presentations",
+        "conference-poster": "Poster Presentations",
+        "conference-paper": "Conference Papers",
+      };
+
       const works = groups
         .map((g) => (Array.isArray(g["work-summary"]) ? g["work-summary"][0] : null))
         .filter(Boolean)
@@ -1160,6 +1180,7 @@
           const title = w.title && w.title.title && w.title.title.value;
           const year = w["publication-date"] && w["publication-date"].year && w["publication-date"].year.value;
           const journal = w["journal-title"] && w["journal-title"].value;
+          const category = TYPE_TO_CATEGORY[w.type] || "Other Works";
 
           const externalIds = (w["external-ids"] && w["external-ids"]["external-id"]) || [];
           const doiEntry = externalIds.find((id) => id["external-id-type"] === "doi");
@@ -1167,7 +1188,7 @@
             ? `https://doi.org/${doiEntry["external-id-value"]}`
             : (w.url && w.url.value) || null;
 
-          return { title, year: year ? parseInt(year, 10) : null, journal, url };
+          return { title, year: year ? parseInt(year, 10) : null, journal, url, category };
         })
         .filter((w) => w.title);
 
@@ -1175,22 +1196,40 @@
         throw new Error("No ORCID works returned");
       }
 
-      works.sort((a, b) => (b.year || 0) - (a.year || 0));
+      const renderItem = (w) => {
+        const titleHtml = w.url
+          ? `<a href="${escapeHtml(w.url)}" target="_blank" rel="noopener">${escapeHtml(w.title)}</a>`
+          : escapeHtml(w.title);
 
-      liveEl.innerHTML = works
-        .map((w) => {
-          const titleHtml = w.url
-            ? `<a href="${escapeHtml(w.url)}" target="_blank" rel="noopener">${escapeHtml(w.title)}</a>`
-            : escapeHtml(w.title);
+        const metaParts = [];
+        if (w.journal) metaParts.push(`<em>${escapeHtml(w.journal)}</em>`);
+        metaParts.push(w.year ? String(w.year) : "n.d.");
 
-          const metaParts = [];
-          if (w.journal) metaParts.push(`<em>${escapeHtml(w.journal)}</em>`);
-          metaParts.push(w.year ? String(w.year) : "n.d.");
+        return `
+          <div class="item">
+            <strong>${titleHtml}</strong>
+            <div class="meta">${metaParts.join(" · ")}</div>
+          </div>
+        `;
+      };
+
+      let isFirstCategory = true;
+
+      liveEl.innerHTML = CATEGORY_ORDER
+        .map((category) => {
+          const categoryWorks = works
+            .filter((w) => w.category === category)
+            .sort((a, b) => (b.year || 0) - (a.year || 0));
+
+          if (categoryWorks.length === 0) return "";
+
+          const headingMargin = isFirstCategory ? "14px 0 6px" : "18px 0 6px";
+          isFirstCategory = false;
 
           return `
-            <div class="item">
-              <strong>${titleHtml}</strong>
-              <div class="meta">${metaParts.join(" · ")}</div>
+            <h3 class="small" style="margin:${headingMargin};">${escapeHtml(category)}</h3>
+            <div class="list">
+              ${categoryWorks.map(renderItem).join("")}
             </div>
           `;
         })
