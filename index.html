@@ -78,22 +78,7 @@
       --max:980px;
     }
 
-    /* Light theme: follows system preference by default, unless overridden below */
-    @media (prefers-color-scheme: light){
-      :root:not([data-theme="dark"]){
-        --bg:#f4f7fc;
-        --text:#0f172a;
-        --muted:#48536b;
-        --link:#1d5fd6;
-        --border:rgba(15,23,42,.14);
-        --shadow:0 10px 30px rgba(15,23,42,.12);
-        --card-bg:linear-gradient(180deg,#ffffff,#f3f6fc);
-        --inset-bg:rgba(15,23,42,.05);
-        --avatar-bg:rgba(15,23,42,.08);
-      }
-    }
-
-    /* Explicit user choice (persisted in localStorage) always wins over system preference */
+    /* Dark is the default for every new visitor; light only applies once explicitly chosen and stored */
     :root[data-theme="light"]{
       --bg:#f4f7fc;
       --text:#0f172a;
@@ -221,16 +206,6 @@
 
     :root[data-theme="light"] .theme-toggle .icon-sun{
       display:block;
-    }
-
-    @media (prefers-color-scheme: light){
-      :root:not([data-theme="dark"]) .theme-toggle .icon-moon{
-        display:none;
-      }
-
-      :root:not([data-theme="dark"]) .theme-toggle .icon-sun{
-        display:block;
-      }
     }
 
     @media (max-width:1000px){
@@ -1261,7 +1236,6 @@
     const STORAGE_KEY = "theme";
     const btn = document.getElementById("theme-toggle");
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    const mql = window.matchMedia("(prefers-color-scheme: light)");
 
     const getStored = () => {
       try {
@@ -1271,11 +1245,8 @@
       }
     };
 
-    const effectiveTheme = () => {
-      const stored = getStored();
-      if (stored === "light" || stored === "dark") return stored;
-      return mql.matches ? "light" : "dark";
-    };
+    // Dark is the default for every visitor until they explicitly choose light.
+    const effectiveTheme = () => (getStored() === "light" ? "light" : "dark");
 
     const reflectState = (theme) => {
       if (btn) {
@@ -1299,11 +1270,6 @@
         reflectState(next);
       });
     }
-
-    mql.addEventListener("change", () => {
-      if (getStored()) return;
-      reflectState(effectiveTheme());
-    });
   })();
 </script>
 
