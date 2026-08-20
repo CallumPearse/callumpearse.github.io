@@ -180,6 +180,7 @@
     }
 
     .hero{
+      position:relative;
       display:grid;
       grid-template-columns:1.2fr .8fr;
       gap:18px;
@@ -190,6 +191,37 @@
       .hero{
         grid-template-columns:1fr;
       }
+    }
+
+    /* Cursor-following ambient glow, hero-only. JS updates --mouse-x/-y (px,
+       relative to .hero) each frame; transform:translate() picks those up
+       and the CSS transition below smooths the motion — no need to animate
+       the gradient itself. Stays at opacity:0 (and off-screen via the
+       fallback translate values) until JS explicitly activates it, so it's
+       inert by default for touch/reduced-motion/no-JS. */
+    .cursor-glow{
+      position:absolute;
+      top:0;
+      left:0;
+      width:360px;
+      height:360px;
+      margin:-180px 0 0 -180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(var(--accent-rgb),.15), transparent 70%);
+      transform:translate(var(--mouse-x,-9999px), var(--mouse-y,-9999px));
+      opacity:0;
+      pointer-events:none;
+      z-index:2;
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      .cursor-glow{
+        transition:transform 150ms ease-out, opacity 200ms ease-out;
+      }
+    }
+
+    .cursor-glow.is-active{
+      opacity:1;
     }
 
     /* Glassmorphism: index.html-local override of the shared .card rule
@@ -944,6 +976,8 @@
         </a>
       </div>
     </aside>
+
+    <div class="cursor-glow" aria-hidden="true"></div>
   </div>
 </header>
 
@@ -1374,6 +1408,48 @@
           animateCounter(el);
         }, index * STAGGER_MS);
       });
+    });
+  })();
+</script>
+
+<script>
+  (function initCursorGlow() {
+    // Full opt-out, not just "no animation": cursor-following motion has
+    // nothing to react to on touch, and can be genuinely uncomfortable for
+    // motion-sensitive users, so skip attaching any listeners at all.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+
+    var hero = document.querySelector(".hero");
+    var glow = document.querySelector(".cursor-glow");
+    if (!hero || !glow) return;
+
+    var pendingFrame = false;
+    var lastX = 0;
+    var lastY = 0;
+
+    function applyPosition() {
+      pendingFrame = false;
+      hero.style.setProperty("--mouse-x", lastX + "px");
+      hero.style.setProperty("--mouse-y", lastY + "px");
+    }
+
+    hero.addEventListener("mousemove", function (e) {
+      var rect = hero.getBoundingClientRect();
+      lastX = e.clientX - rect.left;
+      lastY = e.clientY - rect.top;
+      if (!pendingFrame) {
+        pendingFrame = true;
+        requestAnimationFrame(applyPosition);
+      }
+    });
+
+    hero.addEventListener("mouseenter", function () {
+      glow.classList.add("is-active");
+    });
+
+    hero.addEventListener("mouseleave", function () {
+      glow.classList.remove("is-active");
     });
   })();
 </script>
