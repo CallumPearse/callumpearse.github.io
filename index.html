@@ -63,6 +63,44 @@
 
     *{box-sizing:border-box}
 
+    /* Faint drifting circuit-board texture, fixed behind all content. A
+       single tile repeats via background-image; drifting exactly one tile
+       width/height loops seamlessly. Colour is baked into the SVG itself
+       (the site's existing ambient blue) and kept theme-agnostic — a neutral
+       tone at this opacity reads as a faint texture on both dark and light
+       backgrounds without needing separate light/dark variants. */
+    .bg-pattern{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      opacity:.05;
+      pointer-events:none;
+      background-color:var(--text);
+      -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.2'%3E%3Cpath d='M0 30 H45 M45 30 V60 M45 60 H120'/%3E%3Cpath d='M0 90 H30 M30 90 V15 M30 15 H90 M90 15 V0'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Ccircle cx='45' cy='30' r='2.5'/%3E%3Ccircle cx='45' cy='60' r='2.5'/%3E%3Ccircle cx='30' cy='90' r='2.5'/%3E%3Ccircle cx='30' cy='15' r='2.5'/%3E%3Ccircle cx='90' cy='15' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+      mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.2'%3E%3Cpath d='M0 30 H45 M45 30 V60 M45 60 H120'/%3E%3Cpath d='M0 90 H30 M30 90 V15 M30 15 H90 M90 15 V0'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Ccircle cx='45' cy='30' r='2.5'/%3E%3Ccircle cx='45' cy='60' r='2.5'/%3E%3Ccircle cx='30' cy='90' r='2.5'/%3E%3Ccircle cx='30' cy='15' r='2.5'/%3E%3Ccircle cx='90' cy='15' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+      -webkit-mask-size:120px 120px;
+      mask-size:120px 120px;
+      -webkit-mask-repeat:repeat;
+      mask-repeat:repeat;
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      .bg-pattern{
+        animation:bg-drift 100s linear infinite;
+      }
+    }
+
+    @keyframes bg-drift{
+      from{
+        -webkit-mask-position:0 0;
+        mask-position:0 0;
+      }
+      to{
+        -webkit-mask-position:120px 120px;
+        mask-position:120px 120px;
+      }
+    }
+
     html{
       scroll-behavior:smooth;
     }
@@ -687,6 +725,8 @@
 </head>
 
 <body>
+<div class="bg-pattern" aria-hidden="true"></div>
+
 <svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true">
   <defs>
     <linearGradient id="divider-fade" x1="0" y1="0" x2="1" y2="0">
