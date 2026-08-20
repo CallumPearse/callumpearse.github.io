@@ -257,6 +257,43 @@
       line-height:1.1;
     }
 
+    /* One-time hero entrance: pure CSS, runs on page load regardless of
+       scroll. Text is present in the DOM/markup as normal from the start —
+       only opacity/transform are animated, which doesn't affect the
+       accessible name or what crawlers see, so nothing is hidden from
+       screen readers or delayed for SEO. */
+    @media (prefers-reduced-motion: no-preference){
+      .reveal-word{
+        display:inline-block;
+      }
+
+      .reveal-word,
+      .reveal-line{
+        opacity:0;
+        transform:translateY(14px);
+        animation:hero-reveal 500ms ease-out forwards;
+      }
+
+      .reveal-word:nth-of-type(1){
+        animation-delay:0ms;
+      }
+
+      .reveal-word:nth-of-type(2){
+        animation-delay:90ms;
+      }
+
+      .reveal-line{
+        animation-delay:180ms;
+      }
+    }
+
+    @keyframes hero-reveal{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
     h3{
       line-height:1.35;
     }
@@ -803,10 +840,10 @@
           height="110"
           fetchpriority="high"
         >
-        <h1>Callum Pearse</h1>
+        <h1><span class="reveal-word">Callum</span> <span class="reveal-word">Pearse</span></h1>
       </div>
 
-      <p class="subtitle">
+      <p class="subtitle reveal-line">
         Final-year medical student, King’s College London · Surgical research · Surgical education &amp; robotics
       </p>
 
