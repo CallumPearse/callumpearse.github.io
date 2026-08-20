@@ -1276,6 +1276,63 @@
 <script src="/assets/reveal.js"></script>
 
 <script>
+  (function initStatCountUp() {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Hero stats and "At a Glance" citation metrics are static, hand-maintained
+    // numbers, not ORCID-derived (the live ORCID feed only ever populates
+    // #outputs-live separately) — so reading textContent here as the count-up
+    // target is always the real, complete value, never a partial/loading one.
+    var COUNTER_SELECTOR = ".stat-number, .scholar-metric strong";
+    var DURATION_MS = 1000;
+
+    var counters = Array.prototype.slice.call(document.querySelectorAll(COUNTER_SELECTOR));
+    if (counters.length === 0) return;
+
+    counters.forEach(function (el) {
+      var target = parseInt(el.textContent, 10);
+      if (isNaN(target)) return;
+      el.dataset.countTarget = target;
+      el.textContent = "0";
+    });
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function animateCounter(el) {
+      var target = parseInt(el.dataset.countTarget, 10);
+      if (isNaN(target)) return;
+      var start = performance.now();
+
+      function tick(now) {
+        var progress = Math.min((now - start) / DURATION_MS, 1);
+        el.textContent = Math.round(easeOutCubic(progress) * target);
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = target;
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    // Reuses the same IntersectionObserver from reveal.js (via the
+    // "card:revealed" event it dispatches) instead of running a second one.
+    document.addEventListener("card:revealed", function (event) {
+      var cardCounters = event.target.querySelectorAll(COUNTER_SELECTOR);
+      cardCounters.forEach(function (el) {
+        if (el.dataset.counted) return;
+        el.dataset.counted = "true";
+        animateCounter(el);
+      });
+    });
+  })();
+</script>
+
+<script>
   (async function loadOrcidWorks() {
     const ORCID_ID = "0009-0000-7396-7595";
     const ORCID_WORKS_URL = `https://pub.orcid.org/v3.0/${ORCID_ID}/works`;

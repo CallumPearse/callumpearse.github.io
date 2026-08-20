@@ -24,6 +24,9 @@
           if (!entry.isIntersecting) return;
           entry.target.classList.add("is-visible");
           obs.unobserve(entry.target);
+          // Lets page-specific scripts (e.g. a stat count-up) hook into this
+          // same reveal trigger instead of running a second observer.
+          entry.target.dispatchEvent(new CustomEvent("card:revealed", { bubbles: true }));
         });
       },
       { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
