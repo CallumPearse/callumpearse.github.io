@@ -200,6 +200,27 @@
       }
     }
 
+    /* Ambient glow behind the headshot/name — anchored to the card's own
+       stacking context (isolation) so it sits above the card background but
+       behind all real content, and clipped to the card's rounded corners. */
+    .hero section.card{
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
+    }
+
+    .hero section.card::before{
+      content:"";
+      position:absolute;
+      z-index:-1;
+      top:-70px;
+      left:-60px;
+      width:320px;
+      height:320px;
+      background:radial-gradient(circle, rgba(var(--accent-rgb),.18), transparent 70%);
+      pointer-events:none;
+    }
+
     .card{
       background:var(--card-bg);
       border:1px solid var(--border);
@@ -238,10 +259,11 @@
     }
 
     h1{
-      margin:0 0 8px;
-      font-size:40px;
+      margin:0 0 12px;
+      font-size:46px;
+      font-weight:800;
       letter-spacing:-0.5px;
-      line-height:1.15;
+      line-height:1.1;
     }
 
     h2{
@@ -282,7 +304,7 @@
       display:flex;
       gap:18px;
       align-items:center;
-      margin-bottom:10px;
+      margin-bottom:22px;
     }
 
     .profile img{
@@ -290,7 +312,7 @@
       height:110px;
       border-radius:50%;
       object-fit:cover;
-      border:1px solid var(--border);
+      border:2px solid var(--accent);
       background:var(--avatar-bg);
       flex:0 0 auto;
     }
@@ -305,7 +327,9 @@
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:10px;
-      margin-top:18px;
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid var(--border);
     }
 
     .stat{
