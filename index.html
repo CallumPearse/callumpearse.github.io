@@ -192,6 +192,27 @@
       }
     }
 
+    /* Glassmorphism: index.html-local override of the shared .card rule
+       (publications.html keeps the shared solid version). The tint reuses
+       --bg itself rather than a different colour, so the WCAG contrast
+       relationship between text and card background is preserved by
+       construction — blending a colour with itself changes nothing. */
+    .card{
+      background:rgba(11,18,32,.68);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+
+    :root[data-theme="light"] .card{
+      background:rgba(244,247,252,.74);
+    }
+
+    @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+      .card{
+        background:var(--card-bg);
+      }
+    }
+
     /* Ambient glow behind the headshot/name — anchored to the card's own
        stacking context (isolation) so it sits above the card background but
        behind all real content, and clipped to the card's rounded corners. */
