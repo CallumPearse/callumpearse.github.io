@@ -63,44 +63,6 @@
 
     *{box-sizing:border-box}
 
-    /* Faint drifting circuit-board texture, fixed behind all content. A
-       single tile repeats via background-image; drifting exactly one tile
-       width/height loops seamlessly. Colour is baked into the SVG itself
-       (the site's existing ambient blue) and kept theme-agnostic — a neutral
-       tone at this opacity reads as a faint texture on both dark and light
-       backgrounds without needing separate light/dark variants. */
-    .bg-pattern{
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      opacity:.05;
-      pointer-events:none;
-      background-color:var(--text);
-      -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.2'%3E%3Cpath d='M0 30 H45 M45 30 V60 M45 60 H120'/%3E%3Cpath d='M0 90 H30 M30 90 V15 M30 15 H90 M90 15 V0'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Ccircle cx='45' cy='30' r='2.5'/%3E%3Ccircle cx='45' cy='60' r='2.5'/%3E%3Ccircle cx='30' cy='90' r='2.5'/%3E%3Ccircle cx='30' cy='15' r='2.5'/%3E%3Ccircle cx='90' cy='15' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
-      mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.2'%3E%3Cpath d='M0 30 H45 M45 30 V60 M45 60 H120'/%3E%3Cpath d='M0 90 H30 M30 90 V15 M30 15 H90 M90 15 V0'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Ccircle cx='45' cy='30' r='2.5'/%3E%3Ccircle cx='45' cy='60' r='2.5'/%3E%3Ccircle cx='30' cy='90' r='2.5'/%3E%3Ccircle cx='30' cy='15' r='2.5'/%3E%3Ccircle cx='90' cy='15' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
-      -webkit-mask-size:120px 120px;
-      mask-size:120px 120px;
-      -webkit-mask-repeat:repeat;
-      mask-repeat:repeat;
-    }
-
-    @media (prefers-reduced-motion: no-preference){
-      .bg-pattern{
-        animation:bg-drift 100s linear infinite;
-      }
-    }
-
-    @keyframes bg-drift{
-      from{
-        -webkit-mask-position:0 0;
-        mask-position:0 0;
-      }
-      to{
-        -webkit-mask-position:120px 120px;
-        mask-position:120px 120px;
-      }
-    }
-
     html{
       scroll-behavior:smooth;
     }
@@ -224,27 +186,6 @@
       opacity:1;
     }
 
-    /* Glassmorphism: index.html-local override of the shared .card rule
-       (publications.html keeps the shared solid version). The tint reuses
-       --bg itself rather than a different colour, so the WCAG contrast
-       relationship between text and card background is preserved by
-       construction — blending a colour with itself changes nothing. */
-    .card{
-      background:rgba(11,18,32,.68);
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-    }
-
-    :root[data-theme="light"] .card{
-      background:rgba(244,247,252,.74);
-    }
-
-    @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-      .card{
-        background:var(--card-bg);
-      }
-    }
-
     /* Ambient glow behind the headshot/name — anchored to the card's own
        stacking context (isolation) so it sits above the card background but
        behind all real content, and clipped to the card's rounded corners. */
@@ -287,6 +228,26 @@
       font-weight:800;
       letter-spacing:-0.5px;
       line-height:1.1;
+    }
+
+    /* Below ~400px the avatar+name flex row doesn't leave enough space for
+       46px text next to a 110px avatar — it was overflowing the flex item
+       and getting invisibly clipped by .hero section.card's overflow:hidden
+       (needed elsewhere for the ambient glow). Shrink both the avatar and
+       the headline so they fit without needing to restructure the layout. */
+    @media (max-width:400px){
+      .profile img{
+        width:80px;
+        height:80px;
+      }
+
+      .profile{
+        gap:14px;
+      }
+
+      h1{
+        font-size:30px;
+      }
     }
 
     /* One-time hero entrance: pure CSS, runs on page load regardless of

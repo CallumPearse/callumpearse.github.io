@@ -46,6 +46,43 @@ body{
   line-height:1.6;
 }
 
+/* Faint drifting circuit-board texture, fixed behind all content on every
+   page. A single tile repeats via mask-image over background-color:var(--text),
+   so it's theme-aware (light tint on dark backgrounds, dark tint on light)
+   rather than a single fixed colour that would vanish in one theme. Drifting
+   exactly one tile width/height (120px) loops seamlessly. */
+.bg-pattern{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  opacity:.05;
+  pointer-events:none;
+  background-color:var(--text);
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.2'%3E%3Cpath d='M0 30 H45 M45 30 V60 M45 60 H120'/%3E%3Cpath d='M0 90 H30 M30 90 V15 M30 15 H90 M90 15 V0'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Ccircle cx='45' cy='30' r='2.5'/%3E%3Ccircle cx='45' cy='60' r='2.5'/%3E%3Ccircle cx='30' cy='90' r='2.5'/%3E%3Ccircle cx='30' cy='15' r='2.5'/%3E%3Ccircle cx='90' cy='15' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.2'%3E%3Cpath d='M0 30 H45 M45 30 V60 M45 60 H120'/%3E%3Cpath d='M0 90 H30 M30 90 V15 M30 15 H90 M90 15 V0'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Ccircle cx='45' cy='30' r='2.5'/%3E%3Ccircle cx='45' cy='60' r='2.5'/%3E%3Ccircle cx='30' cy='90' r='2.5'/%3E%3Ccircle cx='30' cy='15' r='2.5'/%3E%3Ccircle cx='90' cy='15' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-size:120px 120px;
+  mask-size:120px 120px;
+  -webkit-mask-repeat:repeat;
+  mask-repeat:repeat;
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .bg-pattern{
+    animation:bg-drift 100s linear infinite;
+  }
+}
+
+@keyframes bg-drift{
+  from{
+    -webkit-mask-position:0 0;
+    mask-position:0 0;
+  }
+  to{
+    -webkit-mask-position:120px 120px;
+    mask-position:120px 120px;
+  }
+}
+
 a{
   color:var(--link);
   text-decoration:underline;
@@ -88,12 +125,38 @@ h2::before{
   background:var(--accent);
 }
 
+/* Glassmorphism: the tint reuses --bg itself rather than a different
+   colour, so the WCAG contrast relationship between text and card
+   background is preserved by construction — blending a colour with
+   itself changes nothing. Disabled below 700px (falls back to the
+   solid --card-bg gradient) since backdrop-filter is a known mobile
+   Safari/Chrome performance risk with this many cards on one page. */
 .card{
-  background:var(--card-bg);
+  background:rgba(11,18,32,.68);
   border:1px solid var(--border);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
   padding:22px;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
+:root[data-theme="light"] .card{
+  background:rgba(244,247,252,.74);
+}
+
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .card{
+    background:var(--card-bg);
+  }
+}
+
+@media (max-width:700px){
+  .card{
+    background:var(--card-bg);
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
 }
 
 .item{
