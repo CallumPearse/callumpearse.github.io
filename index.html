@@ -257,18 +257,47 @@
 
     .stat-number{
       display:block;
-      margin-bottom:2px;
       color:var(--accent);
-      font-size:25px;
-      font-weight:700;
-      line-height:1.15;
+      font-size:34px;
+      font-weight:800;
+      line-height:1.1;
+      letter-spacing:-0.5px;
     }
 
     .stat-label{
       display:block;
+      margin-top:8px;
       color:var(--muted);
       font-size:12px;
       line-height:1.35;
+    }
+
+    .count-bar{
+      display:block;
+      width:100%;
+      height:2px;
+      margin-top:8px;
+      border-radius:2px;
+      background:var(--accent);
+    }
+
+    @keyframes stat-pulse{
+      0%{
+        text-shadow:0 0 0 rgba(var(--accent-rgb),0);
+      }
+      35%{
+        text-shadow:0 0 14px rgba(var(--accent-rgb),.85);
+      }
+      100%{
+        text-shadow:0 0 0 rgba(var(--accent-rgb),0);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      .stat-number.count-pulse,
+      .scholar-metric strong.count-pulse{
+        animation:stat-pulse 450ms ease-out;
+      }
     }
 
     @media (max-width:650px){
@@ -368,10 +397,11 @@
 
     .scholar-metric strong{
       display:block;
-      margin-bottom:2px;
       color:var(--accent);
-      font-size:22px;
-      line-height:1.2;
+      font-size:30px;
+      font-weight:800;
+      line-height:1.1;
+      letter-spacing:-0.5px;
     }
 
     .scholar-metric span{
@@ -729,21 +759,25 @@
       <div class="stats" aria-label="Research output summary">
         <div class="stat">
           <span class="stat-number">2</span>
+          <span class="count-bar" aria-hidden="true"></span>
           <span class="stat-label">Journal Articles</span>
         </div>
 
         <div class="stat">
           <span class="stat-number">2</span>
+          <span class="count-bar" aria-hidden="true"></span>
           <span class="stat-label">Published Abstracts</span>
         </div>
 
         <div class="stat">
           <span class="stat-number">2</span>
+          <span class="count-bar" aria-hidden="true"></span>
           <span class="stat-label">Oral Presentations</span>
         </div>
 
         <div class="stat">
           <span class="stat-number">4</span>
+          <span class="count-bar" aria-hidden="true"></span>
           <span class="stat-label">Posters &amp; Papers</span>
         </div>
       </div>
@@ -785,16 +819,19 @@
       <div class="scholar-metrics" aria-label="Google Scholar citation metrics">
         <div class="scholar-metric">
           <strong>5</strong>
+          <span class="count-bar" aria-hidden="true"></span>
           <span>Citations</span>
         </div>
 
         <div class="scholar-metric">
           <strong>1</strong>
+          <span class="count-bar" aria-hidden="true"></span>
           <span>h-index</span>
         </div>
 
         <div class="scholar-metric">
           <strong>0</strong>
+          <span class="count-bar" aria-hidden="true"></span>
           <span>i10-index</span>
         </div>
       </div>
@@ -1172,6 +1209,8 @@
     // target is always the real, complete value, never a partial/loading one.
     var COUNTER_SELECTOR = ".stat-number, .scholar-metric strong";
     var DURATION_MS = 1000;
+    var STAGGER_MS = 100;
+    var PULSE_CLASS = "count-pulse";
 
     var counters = Array.prototype.slice.call(document.querySelectorAll(COUNTER_SELECTOR));
     if (counters.length === 0) return;
@@ -1181,6 +1220,9 @@
       if (isNaN(target)) return;
       el.dataset.countTarget = target;
       el.textContent = "0";
+
+      var bar = el.parentElement.querySelector(".count-bar");
+      if (bar) bar.style.width = "0%";
     });
 
     function easeOutCubic(t) {
@@ -1190,15 +1232,27 @@
     function animateCounter(el) {
       var target = parseInt(el.dataset.countTarget, 10);
       if (isNaN(target)) return;
+      var bar = el.parentElement.querySelector(".count-bar");
       var start = performance.now();
 
       function tick(now) {
         var progress = Math.min((now - start) / DURATION_MS, 1);
-        el.textContent = Math.round(easeOutCubic(progress) * target);
+        var eased = easeOutCubic(progress);
+        el.textContent = Math.round(eased * target);
+        if (bar) bar.style.width = eased * 100 + "%";
+
         if (progress < 1) {
           requestAnimationFrame(tick);
         } else {
           el.textContent = target;
+          if (bar) bar.style.width = "100%";
+
+          // Brief "arrival" flash once the number lands on its final value.
+          el.classList.add(PULSE_CLASS);
+          el.addEventListener("animationend", function onPulseEnd() {
+            el.classList.remove(PULSE_CLASS);
+            el.removeEventListener("animationend", onPulseEnd);
+          });
         }
       }
 
@@ -1208,11 +1262,19 @@
     // Reuses the same IntersectionObserver from reveal.js (via the
     // "card:revealed" event it dispatches) instead of running a second one.
     document.addEventListener("card:revealed", function (event) {
-      var cardCounters = event.target.querySelectorAll(COUNTER_SELECTOR);
-      cardCounters.forEach(function (el) {
-        if (el.dataset.counted) return;
+      var cardCounters = Array.prototype.filter.call(
+        event.target.querySelectorAll(COUNTER_SELECTOR),
+        function (el) { return !el.dataset.counted; }
+      );
+
+      // Same stagger interval applied to both the hero stats and the
+      // "At a Glance" metrics, so the cascade feels consistent even though
+      // each card reveals (and so starts its own cascade) independently.
+      cardCounters.forEach(function (el, index) {
         el.dataset.counted = "true";
-        animateCounter(el);
+        setTimeout(function () {
+          animateCounter(el);
+        }, index * STAGGER_MS);
       });
     });
   })();
