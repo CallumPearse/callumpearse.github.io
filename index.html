@@ -61,12 +61,14 @@
       --max:980px;
       --accent:#2dd4bf;
       --accent-rgb:45,212,191;
+      --shadow-hover:0 16px 40px rgba(0,0,0,.45);
     }
 
     /* Accent is index.html-specific: a surgical-teal that stays AA-contrast in both themes */
     :root[data-theme="light"]{
       --accent:#0f766e;
       --accent-rgb:15,118,110;
+      --shadow-hover:0 16px 40px rgba(15,23,42,.18);
     }
 
     *{box-sizing:border-box}
@@ -89,13 +91,21 @@
 
     a{
       color:var(--link);
-      text-decoration:none;
+      text-decoration:underline;
+      text-decoration-color:transparent;
+      text-underline-offset:3px;
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      a{
+        transition:color 180ms ease-out, text-decoration-color 180ms ease-out;
+      }
     }
 
     a:hover,
     a:active{
       color:var(--accent);
-      text-decoration:underline;
+      text-decoration-color:var(--accent);
     }
 
     a:focus-visible,
@@ -202,6 +212,20 @@
       display:flex;
       flex-direction:column;
       justify-content:center;
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      /* Specificity matches theme.css's html.js-reveal .card(.is-visible) rules
+         (and wins on source order) so the hover lift isn't silently overridden
+         by the scroll-reveal system's own transform/transition. */
+      html .wrap .card{
+        transition:transform 180ms ease-out, box-shadow 180ms ease-out;
+      }
+
+      html .wrap .card:hover{
+        transform:translateY(-3px);
+        box-shadow:var(--shadow-hover);
+      }
     }
 
     h1{
@@ -385,6 +409,17 @@
       background:var(--inset-bg);
     }
 
+    @media (prefers-reduced-motion: no-preference){
+      .item{
+        transition:transform 180ms ease-out, box-shadow 180ms ease-out;
+      }
+
+      .item:hover{
+        transform:translateY(-2px);
+        box-shadow:var(--shadow-hover);
+      }
+    }
+
     .item strong{
       display:block;
       margin-bottom:4px;
@@ -451,6 +486,16 @@
     .btn:hover{
       background:rgba(var(--accent-rgb),.22);
       text-decoration:none;
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      .btn{
+        transition:transform 120ms ease-out;
+      }
+
+      .btn:active{
+        transform:scale(0.97);
+      }
     }
 
     footer{
