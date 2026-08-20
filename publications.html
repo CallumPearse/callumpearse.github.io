@@ -65,26 +65,6 @@
       scroll-behavior:smooth;
     }
 
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(156,194,255,.25), transparent 55%),
-        radial-gradient(900px 600px at 90% 10%, rgba(148,255,214,.12), transparent 50%),
-        var(--bg);
-      color:var(--text);
-      line-height:1.6;
-    }
-
-    a{
-      color:var(--link);
-      text-decoration:none;
-    }
-
-    a:hover{
-      text-decoration:underline;
-    }
-
     a:focus-visible,
     summary:focus-visible{
       outline:2px solid var(--link);
@@ -159,25 +139,11 @@
       }
     }
 
-    .card{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:22px;
-    }
-
     h1{
       margin:0 0 10px;
       font-size:34px;
       letter-spacing:-0.4px;
       line-height:1.2;
-    }
-
-    h2{
-      margin:0 0 10px;
-      font-size:18px;
-      letter-spacing:0.2px;
     }
 
     p{
@@ -199,23 +165,6 @@
       margin-top:12px;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      padding:12px 14px;
-      border:1px solid rgba(156,194,255,.35);
-      border-radius:12px;
-      background:rgba(156,194,255,.14);
-      color:var(--text);
-      font-size:14px;
-      text-decoration:none;
-    }
-
-    .btn:hover{
-      background:rgba(156,194,255,.22);
-      text-decoration:none;
-    }
-
     .section{
       margin-top:18px;
     }
@@ -225,13 +174,6 @@
       flex-direction:column;
       gap:12px;
       margin-top:10px;
-    }
-
-    .item{
-      padding:14px;
-      border:1px solid var(--border);
-      border-radius:14px;
-      background:var(--inset-bg);
     }
 
     .item h3{
@@ -273,7 +215,7 @@
     .note{
       margin-top:10px;
       padding:12px 14px;
-      border:1px dashed rgba(156,194,255,.35);
+      border:1px dashed rgba(var(--accent-rgb),.35);
       border-radius:14px;
       color:var(--muted);
       font-size:13px;
@@ -402,6 +344,16 @@
 </head>
 
 <body>
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true">
+  <defs>
+    <linearGradient id="divider-fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0" />
+      <stop offset="50%" stop-color="currentColor" stop-opacity="1" />
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+</svg>
+
 <div class="wrap">
 
 <header>
@@ -590,6 +542,12 @@ Nearly one in three paediatric surgeons experience burnout. Although concerning,
     </div>
   </section>
 
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 400 24" preserveAspectRatio="none" focusable="false">
+      <path d="M0,12 C100,2 300,22 400,12" stroke="url(#divider-fade)" />
+    </svg>
+  </div>
+
   <section class="card section" id="published-conference-abstracts">
     <h2>Published Conference Abstracts</h2>
 
@@ -691,6 +649,12 @@ This work describes the acquisition and structure of a multimodal dataset captur
     </div>
   </section>
 
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 400 24" preserveAspectRatio="none" focusable="false">
+      <path d="M0,12 C100,2 300,22 400,12" stroke="url(#divider-fade)" />
+    </svg>
+  </div>
+
   <section class="card section" id="oral-presentations">
     <h2>Oral Presentations</h2>
 
@@ -752,6 +716,12 @@ This study investigates whether objective hand-tracking kinematic metrics can se
       </article>
     </div>
   </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 400 24" preserveAspectRatio="none" focusable="false">
+      <path d="M0,12 C100,2 300,22 400,12" stroke="url(#divider-fade)" />
+    </svg>
+  </div>
 
   <section class="card section" id="poster-presentations">
     <h2>Poster Presentations</h2>
@@ -884,6 +854,12 @@ As a pilot study with a small sample size, this provides preliminary insight int
     </div>
   </section>
 
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 400 24" preserveAspectRatio="none" focusable="false">
+      <path d="M0,12 C100,2 300,22 400,12" stroke="url(#divider-fade)" />
+    </svg>
+  </div>
+
   <section class="card section" id="conference-papers">
     <h2>Conference Papers</h2>
 
@@ -931,6 +907,12 @@ This conference paper reports exploratory analysis of hand-specific workspace ch
       </article>
     </div>
   </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 400 24" preserveAspectRatio="none" focusable="false">
+      <path d="M0,12 C100,2 300,22 400,12" stroke="url(#divider-fade)" />
+    </svg>
+  </div>
 
   <section class="card section" id="copyright">
     <h2>Copyright Note</h2>
