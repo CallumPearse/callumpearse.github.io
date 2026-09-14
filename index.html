@@ -35,7 +35,7 @@
   <meta property="og:image" content="https://callumpearse.co.uk/assets/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Callum Pearse — final-year medical student and surgical researcher">
+  <meta property="og:image:alt" content="Callum Pearse, final-year medical student and surgical researcher">
   <meta property="og:site_name" content="Callum Pearse">
   <meta property="og:locale" content="en_GB">
   <meta property="profile:first_name" content="Callum">
@@ -46,7 +46,7 @@
   <meta name="twitter:title" content="Callum Pearse | Final-Year Medical Student &amp; Robotic Surgery Research">
   <meta name="twitter:description" content="Research in robotic surgery, surgical education, simulation-based training, objective performance assessment, and surgeon wellbeing.">
   <meta name="twitter:image" content="https://callumpearse.co.uk/assets/og-card.png">
-  <meta name="twitter:image:alt" content="Callum Pearse — final-year medical student and surgical researcher">
+  <meta name="twitter:image:alt" content="Callum Pearse, final-year medical student and surgical researcher">
 
   <!-- Icons -->
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
@@ -142,7 +142,6 @@
     }
 
     .hero{
-      position:relative;
       display:grid;
       grid-template-columns:1.2fr .8fr;
       gap:18px;
@@ -153,58 +152,6 @@
       .hero{
         grid-template-columns:1fr;
       }
-    }
-
-    /* Cursor-following ambient glow, hero-only. JS updates --mouse-x/-y (px,
-       relative to .hero) each frame; transform:translate() picks those up
-       and the CSS transition below smooths the motion — no need to animate
-       the gradient itself. Stays at opacity:0 (and off-screen via the
-       fallback translate values) until JS explicitly activates it, so it's
-       inert by default for touch/reduced-motion/no-JS. */
-    .cursor-glow{
-      position:absolute;
-      top:0;
-      left:0;
-      width:360px;
-      height:360px;
-      margin:-180px 0 0 -180px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(var(--accent-rgb),.15), transparent 70%);
-      transform:translate(var(--mouse-x,-9999px), var(--mouse-y,-9999px));
-      opacity:0;
-      pointer-events:none;
-      z-index:2;
-    }
-
-    @media (prefers-reduced-motion: no-preference){
-      .cursor-glow{
-        transition:transform 150ms ease-out, opacity 200ms ease-out;
-      }
-    }
-
-    .cursor-glow.is-active{
-      opacity:1;
-    }
-
-    /* Ambient glow behind the headshot/name — anchored to the card's own
-       stacking context (isolation) so it sits above the card background but
-       behind all real content, and clipped to the card's rounded corners. */
-    .hero section.card{
-      position:relative;
-      isolation:isolate;
-      overflow:hidden;
-    }
-
-    .hero section.card::before{
-      content:"";
-      position:absolute;
-      z-index:-1;
-      top:-70px;
-      left:-60px;
-      width:320px;
-      height:320px;
-      background:radial-gradient(circle, rgba(var(--accent-rgb),.18), transparent 70%);
-      pointer-events:none;
     }
 
     /* Award entries flow 2-up left-to-right instead of stacking, since the
@@ -234,10 +181,8 @@
     }
 
     /* Below ~400px the avatar+name flex row doesn't leave enough space for
-       46px text next to a 110px avatar — it was overflowing the flex item
-       and getting invisibly clipped by .hero section.card's overflow:hidden
-       (needed elsewhere for the ambient glow). Shrink both the avatar and
-       the headline so they fit without needing to restructure the layout. */
+       46px text next to a 110px avatar. Shrink both the avatar and the
+       headline so they fit without needing to restructure the layout. */
     @media (max-width:400px){
       .profile img{
         width:80px;
@@ -250,43 +195,6 @@
 
       h1{
         font-size:30px;
-      }
-    }
-
-    /* One-time hero entrance: pure CSS, runs on page load regardless of
-       scroll. Text is present in the DOM/markup as normal from the start —
-       only opacity/transform are animated, which doesn't affect the
-       accessible name or what crawlers see, so nothing is hidden from
-       screen readers or delayed for SEO. */
-    @media (prefers-reduced-motion: no-preference){
-      .reveal-word{
-        display:inline-block;
-      }
-
-      .reveal-word,
-      .reveal-line{
-        opacity:0;
-        transform:translateY(14px);
-        animation:hero-reveal 500ms ease-out forwards;
-      }
-
-      .reveal-word:nth-of-type(1){
-        animation-delay:0ms;
-      }
-
-      .reveal-word:nth-of-type(2){
-        animation-delay:90ms;
-      }
-
-      .reveal-line{
-        animation-delay:180ms;
-      }
-    }
-
-    @keyframes hero-reveal{
-      to{
-        opacity:1;
-        transform:translateY(0);
       }
     }
 
@@ -779,18 +687,6 @@
 </head>
 
 <body>
-<div class="bg-pattern" aria-hidden="true"></div>
-
-<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true">
-  <defs>
-    <linearGradient id="divider-fade" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="currentColor" stop-opacity="0" />
-      <stop offset="50%" stop-color="currentColor" stop-opacity="1" />
-      <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
-    </linearGradient>
-  </defs>
-</svg>
-
 <div class="wrap">
 
 <header>
@@ -836,10 +732,10 @@
           height="110"
           fetchpriority="high"
         >
-        <h1><span class="reveal-word">Callum</span> <span class="reveal-word">Pearse</span></h1>
+        <h1>Callum Pearse</h1>
       </div>
 
-      <p class="subtitle reveal-line">
+      <p class="subtitle">
         Final-year medical student, King’s College London · Surgical research · Surgical education &amp; robotics
       </p>
 
@@ -940,8 +836,6 @@
         </a>
       </div>
     </aside>
-
-    <div class="cursor-glow" aria-hidden="true"></div>
   </div>
 </header>
 
@@ -957,9 +851,8 @@
 
     <p class="muted">
       I hope to pursue a career in academic surgery, with a particular interest in urology and robotic surgical
-      subspecialties, combining clinical practice with research that improves the quality, objectivity and
-      accessibility of surgical training. I am especially interested in translating robust methodology and
-      emerging technology into meaningful improvements in education, workforce sustainability and patient care.
+      subspecialties, combining clinical practice with research on objective, technology-enabled assessment
+      of surgical skill.
     </p>
   </section>
 
@@ -977,11 +870,7 @@
     </ul>
   </section>
 
-  <div class="divider" aria-hidden="true">
-    <svg viewBox="0 0 400 24" preserveAspectRatio="none" focusable="false">
-      <path d="M0,12 C100,2 300,22 400,12" stroke="url(#divider-fade)" />
-    </svg>
-  </div>
+  <div class="divider" aria-hidden="true"></div>
 
   <section id="clinical-experience" class="card" style="grid-column:1 / -1;">
     <h2>Clinical Experience</h2>
@@ -1004,11 +893,7 @@
     </ul>
   </section>
 
-  <div class="divider" aria-hidden="true">
-    <svg viewBox="0 0 400 24" preserveAspectRatio="none" focusable="false">
-      <path d="M0,12 C100,2 300,22 400,12" stroke="url(#divider-fade)" />
-    </svg>
-  </div>
+  <div class="divider" aria-hidden="true"></div>
 
   <section id="awards" class="card" style="grid-column:1 / -1;">
     <h2>Awards &amp; Honours</h2>
@@ -1047,11 +932,7 @@
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true">
-    <svg viewBox="0 0 400 24" preserveAspectRatio="none" focusable="false">
-      <path d="M0,12 C100,2 300,22 400,12" stroke="url(#divider-fade)" />
-    </svg>
-  </div>
+  <div class="divider" aria-hidden="true"></div>
 
   <section id="outputs" class="card" style="grid-column:1 / -1;">
     <h2>Research Outputs</h2>
@@ -1292,6 +1173,8 @@
     </div>
   </section>
 
+  <div class="divider" aria-hidden="true"></div>
+
   <section id="contact" class="card" style="grid-column:1 / -1;">
     <h2>Contact</h2>
 
@@ -1332,16 +1215,13 @@
   document.getElementById("updated").textContent = lastUpdated;
 </script>
 
-<script src="/assets/reveal.js"></script>
-
 <script>
   (function initStatCountUp() {
-    if (!("IntersectionObserver" in window)) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     // Hero stats and "At a Glance" citation metrics are static, hand-maintained
     // numbers, not ORCID-derived (the live ORCID feed only ever populates
-    // #outputs-live separately) — so reading textContent here as the count-up
+    // #outputs-live separately), so reading textContent here as the count-up
     // target is always the real, complete value, never a partial/loading one.
     var COUNTER_SELECTOR = ".stat-number, .scholar-metric strong";
     var DURATION_MS = 1000;
@@ -1395,65 +1275,10 @@
       requestAnimationFrame(tick);
     }
 
-    // Reuses the same IntersectionObserver from reveal.js (via the
-    // "card:revealed" event it dispatches) instead of running a second one.
-    document.addEventListener("card:revealed", function (event) {
-      var cardCounters = Array.prototype.filter.call(
-        event.target.querySelectorAll(COUNTER_SELECTOR),
-        function (el) { return !el.dataset.counted; }
-      );
-
-      // Same stagger interval applied to both the hero stats and the
-      // "At a Glance" metrics, so the cascade feels consistent even though
-      // each card reveals (and so starts its own cascade) independently.
-      cardCounters.forEach(function (el, index) {
-        el.dataset.counted = "true";
-        setTimeout(function () {
-          animateCounter(el);
-        }, index * STAGGER_MS);
-      });
-    });
-  })();
-</script>
-
-<script>
-  (function initCursorGlow() {
-    // Full opt-out, not just "no animation": cursor-following motion has
-    // nothing to react to on touch, and can be genuinely uncomfortable for
-    // motion-sensitive users, so skip attaching any listeners at all.
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-
-    var hero = document.querySelector(".hero");
-    var glow = document.querySelector(".cursor-glow");
-    if (!hero || !glow) return;
-
-    var pendingFrame = false;
-    var lastX = 0;
-    var lastY = 0;
-
-    function applyPosition() {
-      pendingFrame = false;
-      hero.style.setProperty("--mouse-x", lastX + "px");
-      hero.style.setProperty("--mouse-y", lastY + "px");
-    }
-
-    hero.addEventListener("mousemove", function (e) {
-      var rect = hero.getBoundingClientRect();
-      lastX = e.clientX - rect.left;
-      lastY = e.clientY - rect.top;
-      if (!pendingFrame) {
-        pendingFrame = true;
-        requestAnimationFrame(applyPosition);
-      }
-    });
-
-    hero.addEventListener("mouseenter", function () {
-      glow.classList.add("is-active");
-    });
-
-    hero.addEventListener("mouseleave", function () {
-      glow.classList.remove("is-active");
+    counters.forEach(function (el, index) {
+      setTimeout(function () {
+        animateCounter(el);
+      }, index * STAGGER_MS);
     });
   })();
 </script>
