@@ -16,6 +16,33 @@
   --avatar-bg:rgba(0,0,0,.2);
   --accent:#2dd4bf;
   --accent-rgb:45,212,191;
+
+  /* Type scale (rem, so it follows the reader's browser font size) */
+  --fs-xs:.75rem;      /* 12px  stat labels */
+  --fs-small:.875rem;  /* 14px  meta lines, notes, nav, footer */
+  --fs-base:1rem;      /* 16px  body text */
+  --fs-h3:1.0625rem;   /* 17px  entry titles */
+  --fs-h2:1.375rem;    /* 22px  section headings */
+  --fs-h1:2rem;        /* 32px  page headings */
+  --fs-hero:2.75rem;   /* 44px  name in the hero */
+  --fs-hero-sm:1.875rem;
+
+  --lh-body:1.55;
+  --lh-snug:1.35;
+  --lh-heading:1.25;
+
+  /* Longest comfortable line for running text */
+  --measure:70ch;
+
+  /* Vertical spacing scale */
+  --space-1:.25rem;    /*  4px */
+  --space-2:.5rem;     /*  8px */
+  --space-3:.75rem;    /* 12px */
+  --space-4:1rem;      /* 16px */
+  --space-5:1.5rem;    /* 24px  between sections, card padding */
+  --space-6:2rem;      /* 32px */
+  --space-7:3rem;      /* 48px */
+  --space-8:4rem;      /* 64px */
 }
 
 /* Dark is the default for every new visitor; light only applies once explicitly chosen and stored */
@@ -43,7 +70,8 @@ body{
     radial-gradient(800px 420px at 50% 0%, rgba(var(--accent-rgb),.10), transparent 60%),
     var(--bg);
   color:var(--text);
-  line-height:1.6;
+  font-size:var(--fs-base);
+  line-height:var(--lh-body);
 }
 
 a{
@@ -73,9 +101,10 @@ a:active{
 h2{
   display:flex;
   align-items:center;
-  gap:8px;
-  margin:0 0 10px;
-  font-size:18px;
+  gap:var(--space-2);
+  margin:0 0 var(--space-3);
+  font-size:var(--fs-h2);
+  line-height:var(--lh-heading);
   letter-spacing:0.2px;
 }
 
@@ -93,10 +122,35 @@ h2::before{
   border:1px solid var(--border);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
-  padding:22px;
+  padding:var(--space-5);
 }
 
+/* Entries in content lists are separated by a thin rule, not boxed.
+   The Awards cards keep their original boxed treatment (see #awards .item). */
 .item{
+  padding:var(--space-4) 0;
+}
+
+.item + .item{
+  border-top:1px solid var(--border);
+}
+
+.list > .item:first-child{
+  padding-top:var(--space-2);
+}
+
+.list > .item:last-child{
+  padding-bottom:0;
+}
+
+.item > :last-child{
+  margin-bottom:0;
+}
+
+#awards .item,
+#awards .item + .item,
+#awards .list > .item:first-child,
+#awards .list > .item:last-child{
   padding:14px;
   border:1px solid var(--border);
   border-radius:14px;
@@ -106,12 +160,12 @@ h2::before{
 .btn{
   display:inline-flex;
   align-items:center;
-  padding:12px 14px;
+  padding:var(--space-3) var(--space-4);
   border:1px solid rgba(var(--accent-rgb),.35);
   border-radius:12px;
   background:rgba(var(--accent-rgb),.14);
   color:var(--text);
-  font-size:14px;
+  font-size:var(--fs-small);
   text-decoration:none;
 }
 
@@ -141,11 +195,11 @@ button.btn:hover{
     transform:scale(0.97);
   }
 
-  .item{
+  #awards .item{
     transition:transform 180ms ease-out, box-shadow 180ms ease-out;
   }
 
-  .item:hover{
+  #awards .item:hover{
     transform:translateY(-2px);
     box-shadow:var(--shadow-hover);
   }
@@ -154,8 +208,118 @@ button.btn:hover{
 .divider{
   grid-column:1 / -1;
   height:1px;
-  margin:4px 0;
+  margin:var(--space-1) 0;
   background:var(--border);
+}
+
+/* ---------------------------------------------------------------------
+   Typography and spacing (shared by every page)
+   --------------------------------------------------------------------- */
+
+h1{
+  margin:0 0 var(--space-3);
+  font-size:var(--fs-h1);
+  letter-spacing:-0.4px;
+  line-height:var(--lh-heading);
+}
+
+/* Name in the hero */
+.profile h1{
+  font-size:var(--fs-hero);
+  font-weight:800;
+  letter-spacing:-0.5px;
+  line-height:1.1;
+}
+
+@media (max-width:400px){
+  .profile h1{
+    font-size:var(--fs-hero-sm);
+  }
+}
+
+h3{
+  font-size:var(--fs-h3);
+  line-height:var(--lh-snug);
+}
+
+.item h3{
+  margin:0 0 var(--space-2);
+}
+
+p{
+  margin:0 0 var(--space-3);
+  max-width:var(--measure);
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.small{
+  font-size:var(--fs-small);
+}
+
+ul{
+  margin:var(--space-3) 0 0;
+  padding-left:var(--space-5);
+}
+
+li{
+  margin:var(--space-2) 0;
+  max-width:var(--measure);
+}
+
+.meta{
+  margin:0 0 var(--space-2);
+  max-width:var(--measure);
+  font-size:var(--fs-small);
+  color:var(--muted);
+}
+
+.btnrow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--space-3);
+  margin-top:var(--space-4);
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  margin-top:var(--space-3);
+}
+
+footer{
+  margin-top:var(--space-6);
+  padding-top:var(--space-4);
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:var(--fs-small);
+}
+
+.footer-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:var(--space-3);
+  flex-wrap:wrap;
+}
+
+.footerlinks{
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--space-3);
+  margin-top:var(--space-3);
+  font-size:var(--fs-small);
+}
+
+.footerlinks a{
+  color:var(--muted);
+}
+
+.footerlinks a:hover{
+  color:var(--text);
+  text-decoration:none;
 }
 
 .theme-toggle{
@@ -230,12 +394,12 @@ button.btn:hover{
   top:12px;
   left:12px;
   z-index:1000;
-  padding:10px 14px;
+  padding:var(--space-3) var(--space-4);
   border:2px solid var(--accent);
   border-radius:10px;
   background:var(--bg);
   color:var(--text);
-  font-size:14px;
+  font-size:var(--fs-small);
   text-decoration:none;
   transform:translateY(-200%);
 }

@@ -70,19 +70,19 @@
     .wrap{
       max-width:var(--max);
       margin:0 auto;
-      padding:32px 18px 60px;
+      padding:var(--space-6) var(--space-4) var(--space-8);
     }
 
     header{
-      padding:28px 0 18px;
+      padding:var(--space-6) 0 var(--space-4);
     }
 
     .nav{
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:20px;
-      margin-bottom:30px;
+      gap:var(--space-5);
+      margin-bottom:var(--space-6);
     }
 
     .nav-left img{
@@ -96,9 +96,9 @@
     .nav-right{
       display:flex;
       align-items:center;
-      gap:16px;
+      gap:var(--space-4);
       flex-wrap:wrap;
-      font-size:13px;
+      font-size:var(--fs-small);
     }
 
     .nav a{
@@ -121,7 +121,7 @@
       .nav{
         flex-direction:column;
         align-items:flex-start;
-        gap:14px;
+        gap:var(--space-3);
       }
 
       .nav-left img{
@@ -130,14 +130,14 @@
       }
 
       .nav-right{
-        gap:12px;
+        gap:var(--space-3);
       }
     }
 
     .hero{
       display:grid;
       grid-template-columns:1.2fr .8fr;
-      gap:18px;
+      gap:var(--space-5);
       align-items:stretch;
     }
 
@@ -156,21 +156,13 @@
     #awards .list{
       display:grid;
       grid-template-columns:repeat(2, 1fr);
-      gap:12px;
+      gap:var(--space-3);
     }
 
     @media (max-width:768px){
       #awards .list{
         grid-template-columns:1fr;
       }
-    }
-
-    h1{
-      margin:0 0 12px;
-      font-size:46px;
-      font-weight:800;
-      letter-spacing:-0.5px;
-      line-height:1.1;
     }
 
     /* Below ~400px the avatar+name flex row doesn't leave enough space for
@@ -183,35 +175,15 @@
       }
 
       .profile{
-        gap:14px;
+        gap:var(--space-3);
       }
-
-      h1{
-        font-size:30px;
-      }
-    }
-
-    h3{
-      line-height:1.35;
-    }
-
-    p{
-      margin:0 0 12px;
-    }
-
-    .muted{
-      color:var(--muted);
-    }
-
-    .small{
-      font-size:14px;
     }
 
     .profile{
       display:flex;
-      gap:18px;
+      gap:var(--space-4);
       align-items:center;
-      margin-bottom:22px;
+      margin-bottom:var(--space-5);
     }
 
     .profile img{
@@ -225,23 +197,23 @@
     }
 
     .subtitle{
-      margin:0 0 12px;
+      margin:0 0 var(--space-3);
       color:var(--muted);
-      font-size:16px;
+      font-size:var(--fs-base);
     }
 
     .stats{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:10px;
-      margin-top:26px;
-      padding-top:18px;
+      gap:var(--space-3);
+      margin-top:var(--space-5);
+      padding-top:var(--space-4);
       border-top:1px solid var(--border);
     }
 
     .stat{
       min-width:0;
-      padding:13px 10px;
+      padding:var(--space-3) var(--space-2);
       border:1px solid var(--border);
       border-radius:14px;
       background:var(--inset-bg);
@@ -251,7 +223,7 @@
     .stat-number{
       display:block;
       color:var(--accent);
-      font-size:34px;
+      font-size:var(--fs-h1);
       font-weight:800;
       line-height:1.1;
       letter-spacing:-0.5px;
@@ -259,17 +231,17 @@
 
     .stat-label{
       display:block;
-      margin-top:8px;
+      margin-top:var(--space-2);
       color:var(--muted);
-      font-size:12px;
-      line-height:1.35;
+      font-size:var(--fs-xs);
+      line-height:var(--lh-snug);
     }
 
     .count-bar{
       display:block;
       width:100%;
       height:2px;
-      margin-top:8px;
+      margin-top:var(--space-2);
       border-radius:2px;
       background:var(--accent);
     }
@@ -302,13 +274,13 @@
     .badges{
       display:flex;
       flex-wrap:wrap;
-      gap:10px;
-      margin-top:14px;
+      gap:var(--space-3);
+      margin-top:var(--space-4);
     }
 
     .badge{
-      font-size:13px;
-      padding:7px 10px;
+      font-size:var(--fs-small);
+      padding:var(--space-2) var(--space-3);
       border:1px solid var(--border);
       border-radius:999px;
       color:var(--muted);
@@ -318,8 +290,8 @@
     .grid{
       display:grid;
       grid-template-columns:repeat(5,1fr);
-      gap:18px;
-      margin-top:18px;
+      gap:var(--space-5);
+      margin-top:var(--space-5);
     }
 
     #about{
@@ -341,47 +313,51 @@
       }
     }
 
-    ul{
-      margin:10px 0 0;
-      padding-left:18px;
-    }
-
-    li{
-      margin:8px 0;
-    }
-
-    .list{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      margin-top:10px;
-    }
-
     .item strong{
       display:block;
-      margin-bottom:4px;
+      margin-bottom:var(--space-1);
     }
 
-    .meta{
-      font-size:13px;
-      color:var(--muted);
+    /* Titles in the Research Outputs list sit on the entry-title step */
+    #outputs .item strong{
+      font-size:var(--fs-h3);
+      line-height:var(--lh-snug);
+    }
+
+    /* Category headings inside Research Outputs (static list and live ORCID list) */
+    #outputs h3{
+      margin:var(--space-5) 0 var(--space-2);
+    }
+
+    #outputs-live > h3:first-child,
+    #outputs-fallback > h3:first-child{
+      margin-top:var(--space-3);
+    }
+
+    #outputs h2 + p{
+      margin:var(--space-1) 0 var(--space-4);
+    }
+
+    aside ul + p{
+      margin-top:var(--space-3);
     }
 
     .summary{
-      margin-top:8px;
+      margin:0;
+      max-width:var(--measure);
       color:var(--muted);
-      font-size:14px;
+      font-size:var(--fs-small);
     }
 
     .scholar-metrics{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      margin-top:12px;
+      gap:var(--space-3);
+      margin-top:var(--space-3);
     }
 
     .scholar-metric{
-      padding:12px 8px;
+      padding:var(--space-3) var(--space-2);
       border:1px solid var(--border);
       border-radius:12px;
       background:var(--inset-bg);
@@ -391,7 +367,7 @@
     .scholar-metric strong{
       display:block;
       color:var(--accent);
-      font-size:30px;
+      font-size:var(--fs-h2);
       font-weight:800;
       line-height:1.1;
       letter-spacing:-0.5px;
@@ -399,47 +375,7 @@
 
     .scholar-metric span{
       color:var(--muted);
-      font-size:12px;
-    }
-
-    .btnrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    footer{
-      margin-top:28px;
-      padding-top:18px;
-      border-top:1px solid var(--border);
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .footer-meta{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .footerlinks{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:10px;
-      font-size:13px;
-    }
-
-    .footerlinks a{
-      color:var(--muted);
-    }
-
-    .footerlinks a:hover{
-      color:var(--text);
-      text-decoration:none;
+      font-size:var(--fs-xs);
     }
 
     @media (prefers-reduced-motion:reduce){
@@ -871,7 +807,7 @@
         <li>Confirmed elective: Trauma and Orthopaedic Surgery, Royal Melbourne Hospital, January to February 2027</li>
       </ul>
 
-      <p class="small muted" style="margin-top:12px;">
+      <p class="small muted">
         Citation metrics updated November 2026. Figures may differ slightly from the live Google Scholar profile.
       </p>
 
@@ -1010,7 +946,7 @@
   <section id="outputs" class="card" style="grid-column:1 / -1;">
     <h2>Research Outputs</h2>
 
-    <p class="small muted" style="margin:4px 0 14px;">
+    <p class="small muted">
       Live from <a href="https://orcid.org/0009-0000-7396-7595" target="_blank" rel="noopener">ORCID</a> ·
       this list syncs automatically on page load; a recent snapshot is shown if the live feed is unavailable.
     </p>
@@ -1018,7 +954,7 @@
     <div id="outputs-live" hidden></div>
 
     <div id="outputs-fallback">
-    <h3 class="small" style="margin:14px 0 6px;">Journal Articles</h3>
+    <h3 class="small">Journal Articles</h3>
 
     <div class="list">
       <div class="item">
@@ -1058,7 +994,7 @@
       </div>
     </div>
 
-    <h3 class="small" style="margin:18px 0 6px;">Published Conference Abstracts</h3>
+    <h3 class="small">Published Conference Abstracts</h3>
 
     <div class="list">
       <div class="item">
@@ -1154,7 +1090,7 @@
       </div>
     </div>
 
-    <h3 class="small" style="margin:18px 0 6px;">Oral Presentations</h3>
+    <h3 class="small">Oral Presentations</h3>
 
     <div class="list">
       <div class="item">
@@ -1193,7 +1129,7 @@
       </div>
     </div>
 
-    <h3 class="small" style="margin:18px 0 6px;">Poster Presentations</h3>
+    <h3 class="small">Poster Presentations</h3>
 
     <div class="list">
       <div class="item">
@@ -1271,7 +1207,7 @@
       </div>
     </div>
 
-    <h3 class="small" style="margin:18px 0 6px;">Conference Papers</h3>
+    <h3 class="small">Conference Papers</h3>
 
     <div class="list">
       <div class="item">
@@ -1295,7 +1231,7 @@
 
     </div>
 
-    <div class="btnrow" style="margin-top:16px;">
+    <div class="btnrow">
       <a class="btn" href="/publications.html">Explore Publications &amp; Abstracts</a>
     </div>
   </section>
@@ -1500,8 +1436,6 @@
         `;
       };
 
-      let isFirstCategory = true;
-
       liveEl.innerHTML = CATEGORY_ORDER
         .map((category) => {
           const categoryWorks = works
@@ -1510,11 +1444,8 @@
 
           if (categoryWorks.length === 0) return "";
 
-          const headingMargin = isFirstCategory ? "14px 0 6px" : "18px 0 6px";
-          isFirstCategory = false;
-
           return `
-            <h3 class="small" style="margin:${headingMargin};">${escapeHtml(category)}</h3>
+            <h3 class="small">${escapeHtml(category)}</h3>
             <div class="list">
               ${categoryWorks.map(renderItem).join("")}
             </div>
