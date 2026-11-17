@@ -120,6 +120,18 @@ h2::before{
   text-decoration:none;
 }
 
+/* <button class="btn"> (e.g. Copy citation) matches the <a class="btn"> links */
+button.btn{
+  margin:0;
+  font-family:inherit;
+  line-height:inherit;
+  cursor:pointer;
+}
+
+button.btn:hover{
+  color:var(--accent);
+}
+
 @media (prefers-reduced-motion: no-preference){
   .btn{
     transition:transform 120ms ease-out;
@@ -192,5 +204,179 @@ h2::before{
     transition:transform 180ms ease-out, box-shadow 180ms ease-out;
     transform:translateY(-3px);
     box-shadow:var(--shadow-hover);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Accessibility
+   --------------------------------------------------------------------- */
+
+/* Visually hidden, still read by screen readers (e.g. the copy-status live region) */
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  margin:-1px;
+  padding:0;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+/* "Skip to main content": first focusable element, hidden until focused */
+.skip-link{
+  position:absolute;
+  top:12px;
+  left:12px;
+  z-index:1000;
+  padding:10px 14px;
+  border:2px solid var(--accent);
+  border-radius:10px;
+  background:var(--bg);
+  color:var(--text);
+  font-size:14px;
+  text-decoration:none;
+  transform:translateY(-200%);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible{
+  transform:none;
+}
+
+/* The skip link moves focus to <main id="main" tabindex="-1">; it is not an
+   interactive control, so it does not need a ring of its own. */
+main:focus{
+  outline:none;
+}
+
+/* One visible focus ring for every interactive control. --link has at least
+   3:1 contrast against the page and card backgrounds in both themes. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible{
+  outline:2px solid var(--link);
+  outline-offset:4px;
+}
+
+a:focus-visible:not(.btn),
+summary:focus-visible{
+  border-radius:4px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Print: clean white page, black text, in either theme. Screen styles
+   are untouched. Closed <details> are opened by theme.js on beforeprint.
+   --------------------------------------------------------------------- */
+
+@media print{
+  :root,
+  :root[data-theme="light"],
+  :root[data-theme="dark"]{
+    --bg:#fff;
+    --text:#000;
+    --muted:#000;
+    --link:#000;
+    --border:#999;
+    --shadow:none;
+    --shadow-hover:none;
+    --card-bg:none;
+    --inset-bg:none;
+    --avatar-bg:none;
+    --accent:#000;
+    --accent-rgb:0,0,0;
+  }
+
+  body{
+    background:#fff !important;
+    color:#000;
+  }
+
+  body .wrap{
+    max-width:none;
+    padding:0;
+  }
+
+  /* Navigation, controls and decoration */
+  nav,
+  .nav,
+  .theme-toggle,
+  .skip-link,
+  button,
+  .btn:not([href^="mailto:"]),
+  .count-bar,
+  .divider,
+  .footerlinks{
+    display:none !important;
+  }
+
+  /* The contact address is the button's text, so keep it as plain text */
+  .btn{
+    padding:0;
+    border:0;
+    background:none;
+  }
+
+  h2::before{
+    display:none;
+  }
+
+  .card{
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+  }
+
+  .item{
+    background:none;
+    box-shadow:none;
+    transform:none;
+  }
+
+  /* Links: underlined, with the URL after external ones (not in-page anchors,
+     navigation or mailto links) */
+  a{
+    color:#000;
+    text-decoration:underline;
+  }
+
+  a[href^="http"]::after{
+    content:" (" attr(href) ")";
+    font-size:.85em;
+    overflow-wrap:anywhere;
+    word-break:break-all;
+  }
+
+  /* Keep entries and headings together */
+  h1,
+  h2,
+  h3{
+    break-after:avoid;
+    page-break-after:avoid;
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+
+  .item,
+  article,
+  .stat,
+  .scholar-metric,
+  .note,
+  li{
+    break-inside:avoid;
+    page-break-inside:avoid;
   }
 }
